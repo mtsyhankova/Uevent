@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 // import { Link } from 'react-router-dom'
-import { BurgerButton } from './components/buger-buttun/index';
-import { MenuBurger } from './components/buger-buttun/menu-burger-btn/menu'
+import { LinksButtonNavBar } from "./../../../shared/user/ui/SpanNavBarLinksPage"
+import { BurgerButton } from './components';
+import { MenuBurger } from './components'
+import { AuthButtons } from './components'
+import { SearchButton } from './components'
+import { MenuSearch } from './components'
+
+
+import { mainLinksTemp } from "./model/store-links"
+
 import "./style.css"
 
 
@@ -12,23 +20,31 @@ export const NavBar = () => {
     { value: "3333333", href: "/", icon: "anchor" },
     { value: "4444444", href: "/", icon: "api" },]
 
-    const mainLinks = [{ value: "Авіаквитки", href: "/", icon: "" },
-    { value: "Готелі", href: "/", icon: "" },
-    { value: "Трансфери", href: "/", icon: "" },
-    { value: "Діяльність", href: "/", icon: "" },
-    { value: "Походи", href: "/", icon: "" },
-    { value: "Пам'ятки", href: "/", icon: "" },
-    { value: "Пригоди", href: "/", icon: "" },
-    { value: "Альпінізм", href: "/", icon: "" },
-    { value: "Їзда на велосипеді", href: "/", icon: "" }]
+
 
     const [menuActive, setMenuActive] = useState(false);
+    const [menuSearchActive, setMenuSearchActive] = useState(true);
     return (
 
         <nav className='nav_bar_box'>
             {isAuth === false ? <div>
-                <BurgerButton active={menuActive} setActive={setMenuActive} />
-                <MenuBurger active={menuActive} setActive={setMenuActive} header={'ddeded'} items={itemsBurger} />
+                <div className='header_box_navBar'>
+                    <div>
+                        <BurgerButton active={menuActive} setActive={setMenuActive} />
+                        <MenuBurger active={menuActive} setActive={setMenuActive} header={'ddeded'} items={itemsBurger} />
+                    </div>
+                    <AuthButtons />
+                </div>
+
+                <div className='links_box'>
+
+                    <LinksButtonNavBar links={mainLinksTemp} />
+                    <div>
+                        <SearchButton active={menuSearchActive} setActive={setMenuSearchActive} />
+                        <MenuSearch active={menuActive} setActive={setMenuActive} header={'ddeded'} items={itemsBurger} />
+
+                    </div>
+                </div>
             </div> : ''}
 
         </nav>
