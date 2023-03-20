@@ -1,25 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import imgPlace from './assets/place.png'
+import imgCalendar from './assets/calendar.png'
+
 
 import "./style.css"
 
 
-export const MenuSearch = ({ active, setActive, header, items }) => {
+export const MenuSearch = ({ active, setActive }) => {
     return (
-        < div className={active ? ' menu_burger active' : ' menu_burger'} onClick={() => setActive(false)} >
-            <div className='menu_blur'>
-                {console.log('deded')}
-                <div className='menu__content' onClick={e => e.stopPropagation()}>
-                    <div className='menu__header'>{header}</div>
-                    <ul>
-                        {items.map(item =>
-                            <li>
-                                <Link to={item.href} className='menu__link'>{item.value}/</Link>
-                                <i class="large material-icons">insert_chart</i>
 
-                                {/* <span className='material-icons'>{item.icon}</span> */}
-                            </li>)}
-                    </ul>
+
+
+        < div className={active ? ' menu_search active' : ' menu_search'} onClick={() => setActive(false)} >
+            <div className='menu_blur'>
+                <div className='menu__content_search' onClick={e => e.stopPropagation()}>
+                    <form className='search_form'>
+                        <input className='input_form_search' type='text' placeholder='Введіть назву або виконавця' />
+                        <div className='place_search'>
+                            <img src={imgPlace} />
+                            <select className='select_form_search'>
+                                <option>Усі</option>
+                                <option>Київ</option>
+                                <option>Харків</option>
+                                <option>Чернівці</option>
+                            </select>
+                        </div>
+
+                        <div className='place_search'>
+                            <img src={imgCalendar} />
+                            <select className='select_form_search'>
+                                <option>Усі</option>
+                                <option>Київ</option>
+                                <option>Харків</option>
+                                <option>Чернівці</option>
+                            </select>
+                        </div>
+
+                        <button className='button_search_form'>Пошук</button>
+
+                    </form>
                 </div>
             </div>
         </div>

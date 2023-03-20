@@ -41,7 +41,7 @@ export const NavBar = () => {
                     <LinksButtonNavBar links={mainLinksTemp} />
                     <div>
                         <SearchButton active={menuSearchActive} setActive={setMenuSearchActive} />
-                        <MenuSearch active={menuActive} setActive={setMenuActive} header={'ddeded'} items={itemsBurger} />
+                        <MenuSearch active={menuSearchActive} setActive={setMenuSearchActive} />
 
                     </div>
                 </div>

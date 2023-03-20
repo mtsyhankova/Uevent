@@ -15,8 +15,6 @@ export const MenuBurger = ({ active, setActive, header, items }) => {
                             <li>
                                 <Link to={item.href} className='menu__link'>{item.value}/</Link>
                                 <i class="large material-icons">insert_chart</i>
-
-                                {/* <span className='material-icons'>{item.icon}</span> */}
                             </li>)}
                     </ul>
                 </div>

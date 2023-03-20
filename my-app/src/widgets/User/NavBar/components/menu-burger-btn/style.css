@@ -10,6 +10,7 @@
 
     transform: translateX(-130%);
     transition: all 1s;
+    z-index: 500;
 }
 
 .menu_burger.active {
