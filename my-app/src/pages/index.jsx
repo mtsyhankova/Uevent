@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router";
-import { lazy } from "react";
+// import { lazy } from "react";
 import Homepage from "./Home/Homepage"
 import Notfoundpage from "./Notfound/Notfoundpage"
 

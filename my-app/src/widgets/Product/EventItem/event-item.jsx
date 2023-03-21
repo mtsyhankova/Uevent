@@ -11,24 +11,26 @@ export const EventItem = ({ eventItems }) => {
             {eventItems.slice(0, 5).map(item =>
                 <div>
                     <div className='event-hover-vision'>
+                        <p className='event-reverse-date'>{item.date}</p>
+                        <p className='event-reverse-location'>{item.location}</p>
+                        <p className='event-reverse-name'>{item.name}</p>
+                        <span className='event-button'>Придбати</span>
                         <div className='eventitem'>
                             <img className='eventimg' src={luffy} alt="aboba" />
-                            <p className='event-data-text'>{item.date}</p>
+                            <p className='event-date-text'>{item.date}</p>
                             <p className='event-name-text'>{item.name}</p>
                             <p className='event-location-text'>{item.location}</p>
                             <p className='event-price-text'>{item.price}</p>
                         </div>
-
                     </div>
                 </div>
             )}
             {eventItems.length > 4 ? <Link to="/uhuhu">
                 <div className='all_product_one_catgory_button'>
                     Переглянути усі
-                    <img className='arrow_all' src={arrow} />
+                    <img className='arrow_all' src={arrow} alt="aboba" />
                 </div>
             </Link> : ''}
-
         </div>
     )
 }

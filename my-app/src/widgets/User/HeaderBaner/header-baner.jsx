@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React/*, { useState, Component }*/ from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import dmin from './assets/d-min.png'
 import forest from './assets/natureforesttreesfog.jpg'

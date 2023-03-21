@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
+p,
+span {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+}
+
 .box_one_category_product {
     display: flex;
     flex-direction: row;
@@ -16,18 +22,29 @@
     height: 410px;
     border-radius: 30px;
     transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+    user-select: none;
 }
 
 .event-hover-vision {
-    background-color: #070404;
-    color: #000000;
+    background-color: #f67b6f;
     width: 220px;
     height: 410px;
     border-radius: 30px;
     margin: 1vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-.event-hover-vision:hover .eventitem {
+.eventitem:hover {
+    visibility: hiddens;
+    opacity: 0;
+}
+
+.eventitem:hover {
     visibility: hiddens;
     opacity: 0;
 }
@@ -38,13 +55,16 @@
     border-radius: 15%;
 }
 
-p {
-    font-family: 'Playfair Display', serif;
-}
-
-.event-data-text {
+.event-date-text {
     margin: 0px 15px 0px 10px;
     color: #6e6e6e;
+}
+
+.event-reverse-date {
+    padding-left: 30px;
+    padding-top: 10px;
+    color: #ffffff;
+    font-size: 20px;
 }
 
 .event-name-text {
@@ -52,14 +72,41 @@ p {
     font-size: 20px;
 }
 
+.event-reverse-name {
+    padding-left: 30px;
+    padding-top: 70px;
+    color: #ffffff;
+    font-size: 40px;
+}
+
 .event-location-text {
     margin: 30px 15px 0px 10px;
     color: #6e6e6e;
 }
 
+.event-reverse-location {
+    padding-left: 30px;
+    color: rgb(221, 221, 221);
+    font-size: 20px;
+}
+
 .event-price-text {
     margin: 0px 15px 0px 10px;
     font-size: 20px;
+}
+
+.event-button {
+    margin: 50px 30px;
+    background-color: #f67b6f;
+    border: 5px solid white;
+    padding: 10px 20px;
+    width: 120px;
+    color: white;
+}
+
+.event-button:hover {
+    color: #f67b6f;
+    background-color: white;
 }
 
 .all_product_one_catgory_button {

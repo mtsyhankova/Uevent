@@ -7,13 +7,13 @@ import "./style.css"
 
 export const SearchButton = ({ active, setActive }) => {
 
-    const [isActivesSearch, setIActivesSearch] = useState(false);
+    const [isActivesSearch/*, setIActivesSearch*/] = useState(false);
     return (
         < div className='search_bth' onClick={() => setActive(!active)} >
 
-            {isActivesSearch === false ? <img src={activeSearch} />
-                : <img src={inactiveSearch} />}
-            <img src={search} />
+            {isActivesSearch === false ? <img src={activeSearch} alt="aboba" />
+                : <img src={inactiveSearch} alt="aboba" />}
+            <img src={search} alt="aboba" />
         </div>
     )
 }
