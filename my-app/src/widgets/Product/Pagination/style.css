@@ -1,0 +1,43 @@
+.pages_container {
+    justify-content: center;
+    display: flex;
+    padding: 0.5rem;
+}
+
+.page_item {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+
+    border: 0.1rem solid white;
+    background-color: var(--color-3);
+    color: white;
+
+    margin: 0.2rem;
+    padding: 0.5rem;
+
+    transition: all 0.3s ease;
+}
+
+.page_item:hover {
+    background-color: #bf455b;
+}
+
+.page_current {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+
+    border: 0.1rem solid white;
+    background-color: #84ab99;
+    color: white;
+
+    margin: 0.2rem;
+    padding: 0.5rem;
+
+    transition: all 0.3s ease;
+}
+
+.page_current:hover {
+    background-color: #6d9281;
+}
