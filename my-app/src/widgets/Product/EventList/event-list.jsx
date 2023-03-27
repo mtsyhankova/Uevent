@@ -4,10 +4,11 @@ import { EventItem } from '../EventItem'
 import "./style.css"
 
 export const EventList = () => {
-    const itemsBurger = [{ value: "КОНЦЕРТИ В ЄВРОПІ" },
-    { value: "КОНЦЕРТИ В ЄВРОПІ" },
-    { value: "КОНЦЕРТИ В ЄВРОПІ" },
-    { value: "КОНЦЕРТИ В ЄВРОПІ" },]
+    const itemsBurger = [
+        { id: '1bdehbjjebde', value: "КОНЦЕРТИ В ЄВРОПІ" },
+        { id: '1bdehbjjebde', value: "КОНЦЕРТИ В ЄВРОПІ" },
+        { id: '1bdehbjjebde', value: "КОНЦЕРТИ В ЄВРОПІ" },
+        { id: '1bdehbjjebde', value: "КОНЦЕРТИ В ЄВРОПІ" },]
 
     const eventItems = [{ date: "12.04.2023", name: "Абобус", location: "Київ", price: "200" },
     { date: "15.04.2023", name: "Абобус", location: "Чернівці", price: "100" },
@@ -22,7 +23,7 @@ export const EventList = () => {
             {itemsBurger.map(item =>
                 <div className='box_product_main_page'>
                     <div className='category_prodyct'>{item.value}</div>
-                    <EventItem eventItems={eventItems} />
+                    <EventItem eventItems={eventItems} categoruID={item.id} />
                 </div>)}
         </div>
     )

@@ -23,7 +23,7 @@ export const NavBar = () => {
 
 
     const [menuActive, setMenuActive] = useState(false);
-    const [menuSearchActive, setMenuSearchActive] = useState(true);
+    const [menuSearchActive, setMenuSearchActive] = useState(false);
     return (
 
         <nav className='nav_bar_box'>
