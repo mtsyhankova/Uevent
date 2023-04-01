@@ -20,7 +20,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* background-color: rgb(71, 87, 67); */
-    background-color: #476160;
+    background-color: var(--color-4);
 
 }
 
@@ -36,18 +36,4 @@ code {
     width: 8px;
     height: 8px;
     background-color: transparent;
-    /* 
-    &-track {
-        background-color: transparent;
-        border-radius: 5px;
-    }
-
-    &-thumb {
-        background-color: #a6b2c3;
-        border-radius: 5px;
-    }
-
-    &-corner {
-        background-color: #ffffff;
-    } */
 }

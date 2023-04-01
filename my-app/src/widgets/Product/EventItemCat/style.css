@@ -23,13 +23,13 @@ span {
 
 .event-date-text {
     margin: 0px 15px 0px 10px;
-    color: #6e6e6e;
+    color: var(--color-6);
 }
 
 .event-reverse-date {
     padding-left: 30px;
     padding-top: 10px;
-    color: #ffffff;
+    color: var(--color-5);
     font-size: 20px;
 }
 
@@ -41,18 +41,18 @@ span {
 .event-reverse-name {
     padding-left: 30px;
     padding-top: 70px;
-    color: #ffffff;
+    color: var(--color-5);
     font-size: 40px;
 }
 
 .event-location-text {
     margin: 30px 15px 0px 10px;
-    color: #6e6e6e;
+    color: var(--color-6);
 }
 
 .event-reverse-location {
     padding-left: 30px;
-    color: rgb(221, 221, 221);
+    color: var(--color-5);
     font-size: 20px;
 }
 
@@ -63,17 +63,19 @@ span {
 
 .event-button {
     margin: 50px 30px;
-    background-color: #f67b6f;
-    border: 5px solid white;
+    background-color: var(--color-2);
+    ;
+    border: 5px solid var(--color-5);
     padding: 10px 20px;
     width: 120px;
-    color: white;
+    color: var(--color-5);
     /* z-index: 1; */
 }
 
 .event-button:hover {
-    color: #f67b6f;
-    background-color: white;
+    color: var(--color-2);
+    ;
+    background-color: var(--color-5);
     z-index: 10;
 }
 
@@ -85,11 +87,9 @@ span {
     justify-content: center;
     width: 170px;
     height: 60px;
-    color: #ffffff;
+    color: var(--color-5);
 
-    /* 
-    background-color: #cc7d15; */
-    border-color: #ffffff;
+    border-color: var(--color-5);
     border-width: 2px;
     border-style: double;
 
@@ -100,7 +100,7 @@ span {
 
 .all_product_one_catgory_button:hover {
     transition: 2s;
-    background-color: #7c080896;
+    background-color: var(--color-1);
 }
 
 .arrow_all {
@@ -109,8 +109,8 @@ span {
 }
 
 .card-white {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--color-5);
+    color: var(--color-7);
     padding: 10px;
     width: 220px;
     height: 410px;
@@ -120,7 +120,8 @@ span {
 }
 
 .card-pink {
-    background-color: #f67b6f;
+    background-color: var(--color-2);
+    ;
     width: 220px;
     height: 410px;
     position: absolute;

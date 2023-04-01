@@ -18,7 +18,7 @@
     position: absolute;
     top: 0;
 
-    background-color: #914640;
+    background-color: var(--color-1);
 }
 
 .burger_bth span {
@@ -30,7 +30,7 @@
     position: absolute;
     top: 40%;
 
-    background-color: #914640;
+    background-color: var(--color-1);
 }
 
 .burger_bth::after {
@@ -42,5 +42,5 @@
     position: absolute;
     bottom: 0;
 
-    background-color: #914640;
+    background-color: var(--color-1);
 }

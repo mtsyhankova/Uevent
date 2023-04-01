@@ -2,6 +2,7 @@
     justify-content: center;
     display: flex;
     padding: 0.5rem;
+    user-select: none;
 }
 
 .page_item {
@@ -9,18 +10,18 @@
     font-weight: 300;
     font-size: 1.5rem;
 
-    border: 0.1rem solid white;
-    background-color: var(--color-3);
-    color: white;
+    background-color: var(--color-2);
+    border-radius: 40%;
+    color: var(--color-5);
 
     margin: 0.2rem;
-    padding: 0.5rem;
+    padding: 0.3rem 0.7rem;
 
     transition: all 0.3s ease;
 }
 
 .page_item:hover {
-    background-color: #bf455b;
+    background-color: var(--color-1);
 }
 
 .page_current {
@@ -28,16 +29,16 @@
     font-weight: 300;
     font-size: 1.5rem;
 
-    border: 0.1rem solid white;
-    background-color: #84ab99;
-    color: white;
+    border-radius: 40%;
+    background-color: var(--color-3);
+    color: var(--color-5);
 
     margin: 0.2rem;
-    padding: 0.5rem;
+    padding: 0.3rem 0.7rem;
 
     transition: all 0.3s ease;
 }
 
 .page_current:hover {
-    background-color: #6d9281;
+    background-color: var(--color-4);
 }
