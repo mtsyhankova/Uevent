@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom'
 
 import "./style.css"
 
-
 export const AuthButtons = () => {
     return (
         <div>
-            <Link to="#" className='authbtn'>
+            <Link to="/auth" className='authbtn'>
                 Авторизація
             </Link>
-            <Link to="#" className='authbtn'>
+            <Link to="/reg" className='authbtn'>
                 Реєстрація
             </Link>
         </div>
