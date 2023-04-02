@@ -6,6 +6,7 @@ import Productspage from "./Products/Productpage";
 import Authpage from "./Authotization/Authpage"
 import Regpage from "./Registration/Regpage"
 import Recovery from "./Recovery/Recovery";
+import Profile from "./Profile/Homepage";
 
 // const Homepage = lazy(() => import("./Home/Homepage"));
 // const Notfoundpage = lazy(() => import("./Notfound/Notfoundpage"));
@@ -22,6 +23,7 @@ export const Routing = () => {
 
 
             <Route path="/" element={<Homepage />} />
+            <Route path="/profile" element={<Profile />} />
 
             <Route path="/products/:idCAt" element={<Productspage />} />
         </Routes>

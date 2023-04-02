@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { Link } from 'react-router-dom'
 import { LinksButtonNavBar } from "./../../../shared/user/ui/SpanNavBarLinksPage"
-import { BurgerButton } from './components';
+import { BurgerButton, ProfileExit } from './components';
 import { MenuBurger } from './components'
 import { AuthButtons } from './components'
 import { SearchButton } from './components'
@@ -21,13 +21,18 @@ export const NavBar = () => {
     const [menuSearchActive, setMenuSearchActive] = useState(false);
     return (
         <nav className='nav_bar_box'>
-            {isAuth === false ? <div>
+            <div>
                 <div className='header_box_navBar'>
                     <div>
                         <BurgerButton active={menuActive} setActive={setMenuActive} />
                         <MenuBurger active={menuActive} setActive={setMenuActive} header={'ddeded'} items={itemsBurger} />
                     </div>
-                    <AuthButtons />
+
+                    {isAuth === true ?
+                        <div className="marg_bot_aut"><AuthButtons /></div>
+                        :
+                        <div className="marg_bot_aut"><ProfileExit /></div>}
+
                 </div>
 
                 <div className='links_box'>
@@ -37,7 +42,7 @@ export const NavBar = () => {
                         <MenuSearch active={menuSearchActive} setActive={setMenuSearchActive} />
                     </div>
                 </div>
-            </div> : ''}
+            </div>
         </nav>
     )
 }
