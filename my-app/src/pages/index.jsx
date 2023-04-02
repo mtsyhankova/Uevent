@@ -5,6 +5,7 @@ import Notfoundpage from "./Notfound/Notfoundpage"
 import Productspage from "./Products/Productpage";
 import Authpage from "./Authotization/Authpage"
 import Regpage from "./Registration/Regpage"
+import Recovery from "./Recovery/Recovery";
 
 // const Homepage = lazy(() => import("./Home/Homepage"));
 // const Notfoundpage = lazy(() => import("./Notfound/Notfoundpage"));
@@ -12,10 +13,16 @@ import Regpage from "./Registration/Regpage"
 export const Routing = () => {
     return (
         <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="*" element={<Notfoundpage />} />
+
             <Route path="/auth" element={<Authpage />} />
             <Route path="/reg" element={<Regpage />} />
-            <Route path="*" element={<Notfoundpage />} />
+            <Route path="/reset_password" element={<Recovery />} />
+
+
+
+            <Route path="/" element={<Homepage />} />
+
             <Route path="/products/:idCAt" element={<Productspage />} />
         </Routes>
     );
