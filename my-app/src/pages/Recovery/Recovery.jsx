@@ -4,7 +4,7 @@ import "./style.css"
 
 const Recovery = () => {
     const [/*email,*/ setEmail] = useState([]);
-    const [/*password,*/ setPassword] = useState([]);
+    // const [password, setPassword] = useState([]);
     const [error/*, setError*/] = useState('');
 
     const [viewedEmail, setViewedEmail] = useState(false);

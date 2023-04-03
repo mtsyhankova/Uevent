@@ -44,7 +44,12 @@ span {
 }
 
 .event-location-text {
-    margin: 30px 15px 0px 10px;
+    margin: 10px 15px 0px 10px;
+    color: var(--color-6);
+}
+
+.event-city-text {
+    margin: 0px 15px 0px 10px;
     color: var(--color-6);
 }
 
@@ -109,7 +114,7 @@ span {
     color: var(--color-7);
     padding: 10px;
     width: 220px;
-    height: 410px;
+    height: 420px;
     border-radius: 30px;
     margin: 1vw;
     position: relative;
@@ -118,7 +123,7 @@ span {
 .card-pink {
     background-color: var(--color-2);
     width: 220px;
-    height: 410px;
+    height: 420px;
     position: absolute;
     left: 0;
     top: 0;

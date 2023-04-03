@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import luffy from './assets/luffy.jpg'
 import arrow from './assets/right-arrow.png'
 
 import "./style.css"
 
 export const EventItem = ({ eventItems, categoruID }) => {
+    let navigate = useNavigate();
+
     return (
         <div className='box_one_category_product'>
             {eventItems.slice(0, 5).map(item =>
@@ -15,12 +18,13 @@ export const EventItem = ({ eventItems, categoruID }) => {
                         <p className='event-date-text'>{item.date}</p>
                         <p className='event-name-text'>{item.name}</p>
                         <p className='event-location-text'>{item.location}</p>
+                        <p className='event-city-text'>{item.city}</p>
                         <p className='event-price-text'>{item.price}</p>
                         <div className='card-pink'>
                             <p className='event-reverse-date'>{item.date}</p>
                             <p className='event-reverse-location'>{item.location}</p>
                             <p className='event-reverse-name'>{item.name}</p>
-                            <span className='event-button'>Придбати</span>
+                            <span className='event-button' onClick={() => { navigate(`/event/open/${item.date}/${item.name}/${item.location}/${item.city}/${item.price}/`) }}>Придбати</span>
                         </div>
                     </div>
                 </div>

@@ -57,7 +57,7 @@
     border: 3px solid var(--color-5);
 
     background-color: var(--color-3);
-    color: white;
+    color: var(--color-5);
 
     font-family: 'Playfair Display', serif;
     font-weight: 300;
