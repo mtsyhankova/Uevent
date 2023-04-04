@@ -6,7 +6,7 @@ import Productspage from "./Products/Productpage";
 import Authpage from "./Authotization/Authpage"
 import Regpage from "./Registration/Regpage"
 import Recovery from "./Recovery/Recovery";
-import Profile from "./Profile/Homepage";
+import Profile from "./Profile/Profile";
 import EventOpened from "./EventOpened/EventOpened";
 
 // const Homepage = lazy(() => import("./Home/Homepage"));
