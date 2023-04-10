@@ -8,3 +8,35 @@
     margin: 200px 200px 0px 200px;
     padding: 30px;
 }
+
+.profile_page_img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.message_link {
+    width: 5vw;
+    height: 3vw;
+    background-color: var(--color-2);
+    border-radius: 25%;
+    background-image: url("./assets/free.png");
+
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding: 0.3vw;
+}
+
+.count_message_block {
+    width: 1.5vw;
+    height: 1.5vw;
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+
+
+
+
+}
