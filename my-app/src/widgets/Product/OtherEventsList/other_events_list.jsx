@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Pagination from '../../Product/Pagination/pagination';
-import userAvatar from '../../../asssets/User/luffy.jpg'
 import EventItem from '../EventItem/event_item';
 
 const OtherEventsList = ({ UpperText }) => {
@@ -15,7 +13,6 @@ const OtherEventsList = ({ UpperText }) => {
     { date: "25.04.2023", name: "Абобіще", location: "Місце проведення", city: "Київ", price: "150" },
     { date: "15.04.2023 - 18.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "100" },
     { date: "25.04.2023", name: "Абобіще", location: "Місце проведення", city: "Київ", price: "150" }]
-    let navigate = useNavigate();
 
     return (
         <div className='event_opened_subslist'>
