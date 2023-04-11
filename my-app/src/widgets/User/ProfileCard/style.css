@@ -24,8 +24,8 @@
     background-image: url("./assets/free.png");
 
     display: flex;
-    align-items: end;
-    justify-content: end;
+    align-items: flex-end;
+    justify-content: flex-end;
     padding: 0.3vw;
 }
 
@@ -35,8 +35,4 @@
     background-color: white;
     border-radius: 50%;
     text-align: center;
-
-
-
-
 }
