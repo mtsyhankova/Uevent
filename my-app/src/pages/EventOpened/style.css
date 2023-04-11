@@ -98,7 +98,7 @@
     color: var(--color-4);
 }
 
-.event_opened_avatar {
+/* .event_opened_comment_avatar {
     width: 70px;
     height: 70px;
     object-fit: cover;
@@ -118,4 +118,4 @@
     margin-left: 30px;
     font-size: 20px;
     color: var(--color-4);
-}
+} */

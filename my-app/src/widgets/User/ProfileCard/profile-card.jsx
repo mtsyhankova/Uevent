@@ -1,56 +1,36 @@
 import React/*, { useState }*/ from 'react';
 import { /*useParams, useNavigate,*/ Link } from 'react-router-dom';
 
-import luffy from './assets/luffy.jpg';
+import userAvatar from '../../../asssets/User/luffy.jpg'
 
 import "./style.css"
+import OtherEventsList from '../../Product/OtherEventsList/other_events_list';
 
 export const ProfileCard = () => {
-    // const { date, name, location, city, price } = useParams();
-    // const [buttonText, setButtonText] = useState([`${price} грн`]);
-    // const [subsPage, setSubsPage] = useState([0]);
-    // const [eventsPage, setEventsPage] = useState([0]);
-    // let navigate = useNavigate();
-
+    const UpperText1 = "Історія покупок"
+    const UpperText2 = "Мої компанії"
     const countMassege = 100;// количство непрочитаніх сообщ
+    const userData = { name: 'abobus1', status: 'dwdwddwdvv f ugfufefuegfegfg f eugfe  fuge egf  fuegf efuegf ue fgeugfe   egfe fugfug fu' }
 
-    const userData = { name: 'abobus1', status: 'dwdwddwdvv f ugfuegfe fugfug fu' }
-
-    // const organizersEvents = [{ date: "12.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "200" },
-    // { date: "15.04.2023 - 18.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "100" },
-    // { date: "25.04.2023", name: "Абобіще", location: "Місце проведення", city: "Київ", price: "150" },
-    // { date: "15.04.2023 - 18.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "100" },
-    // { date: "25.04.2023", name: "Абобіще", location: "Місце проведення", city: "Київ", price: "150" },
-    // { date: "15.04.2023 - 18.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "100" },
-    // { date: "25.04.2023", name: "Абобіще", location: "Місце проведення", city: "Київ", price: "150" },
-    // { date: "15.04.2023 - 18.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "100" },
-    // { date: "25.04.2023", name: "Абобіще", location: "Місце проведення", city: "Київ", price: "150" }]
-    // const comments = [{ name: 'Перший', content: 'бла бла бла' }, { name: 'Другий', content: 'бла бла бла' }, { name: 'Третій', content: 'бла бла бла' }]
-
-    // function onhover() {
-    //     setButtonText("Підписатися");
-    // }
-
-    // function offhover() {
-    //     setButtonText(`${price} грн`);
-    // }
 
     return (<div>
-        <div className='profile_card_box'>
-            <div>  <img className='profile_page_img' src={luffy} alt="aboba" /></div>
-            <div className='event_opened_name_box'>
-                <p className='event_opened_name'>{userData.name}</p>
-                <p className='event_opened_name'>{userData.status}</p>
+        <div className='card_box_pr'>
+            <div>  <img className='img_avatar_pr' src={userAvatar} alt="aboba" /></div>
+            <div className='data_user_pr'>
+                <p className='name_user_pr'>{userData.name}</p>
+                <p className='status_user_pr'>{userData.status}</p>
             </div>
-            <Link className='message_link' to='#'>
+            <Link className='message_link_pr' to='#'>
                 {/* <img className='message_img' src={luffy} alt="aboba" /> */}
-                <div className='count_message_block'>
+                <div className='count_message_block_pr'>
                     {countMassege > 99 ? <p>99+</p> : <p>{countMassege}</p>}
                 </div>
 
             </Link>
-        </div>
 
+        </div>
+        <OtherEventsList UpperText={UpperText1} />
+        <OtherEventsList UpperText={UpperText2} />
 
     </div>)
 

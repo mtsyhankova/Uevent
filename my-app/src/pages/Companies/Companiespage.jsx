@@ -6,15 +6,14 @@ import { NavBar } from '../../widgets/User/NavBar'
 
 // import "./style.css"
 
-export const Notfoundpage = () => {
+export const Companies = () => {
 
     return (
         <div >
             <NavBar />
-            <SortCategoru />
-            <ProductItemsCat />
+
 
         </div>
     )
 }
-export default Notfoundpage;
+export default Companies;

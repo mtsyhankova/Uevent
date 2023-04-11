@@ -3,7 +3,7 @@ import { EventItem } from '../EventItem'
 
 import "./style.css"
 
-export const EventList = () => {
+export const MainPageCatList = () => {
     const itemsBurger = [
         { id: '1bdehbjjebde', value: "КОНЦЕРТИ В ЄВРОПІ" },
         { id: '1bdehbjjebde', value: "КОНЦЕРТИ В ЄВРОПІ" },
