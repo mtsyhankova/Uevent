@@ -7,12 +7,11 @@ import { NavBar } from '../../widgets/User/NavBar'
 // import "./style.css"
 
 export const Notfoundpage = () => {
-
     return (
         <div >
             <NavBar />
             <SortCategoru />
-            <ProductItemsCat />
+            <ProductItemsCat areYouAuthor={false} />
 
         </div>
     )

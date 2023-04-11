@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '../../Product/Pagination/pagination';
 import userAvatar from '../../../asssets/User/luffy.jpg'
+import EventItem from '../EventItem/event_item';
 
 const OtherEventsList = ({ UpperText }) => {
     const [eventsPage, setEventsPage] = useState([0]);
@@ -21,22 +22,8 @@ const OtherEventsList = ({ UpperText }) => {
             <p className='event_opened_description'>{UpperText}</p>
             <div className='event_opened_flex_row'>
                 {organizersEvents.slice(eventsPage * 3, eventsPage * 3 + 3).map(item =>
-                    <div>
-                        <div className='card-white'>
-                            <img className='eventimg' src={userAvatar} alt="aboba" />
-                            <p className='event-date-text'>{item.date}</p>
-                            <p className='event-name-text'>{item.name}</p>
-                            <p className='event-location-text'>{item.location}</p>
-                            <p className='event-city-text'>{item.city}</p>
-                            <p className='event-price-text'>{item.price}</p>
-                            <div className='card-pink'>
-                                <p className='event-reverse-date'>{item.date}</p>
-                                <p className='event-reverse-location'>{item.location}</p>
-                                <p className='event-reverse-name'>{item.name}</p>
-                                <span className='event-button' onClick={() => { navigate(`/event/open/${item.date}/${item.name}/${item.location}/${item.city}/${item.price}/`) }}>Придбати</span>
-                            </div>
-                        </div>
-                    </div>)}
+                    <EventItem areYouAuthor={false} date={item.date} name={item.name} location={item.location} city={item.city} price={item.price} />
+                )}
             </div>
             <Pagination quantity={organizersEvents.length} numberForPage={3} current={eventsPage} change={setEventsPage} />
         </div>

@@ -86,8 +86,9 @@ span {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 170px;
+    width: 220px;
     height: 60px;
+    margin: 0 25px;
     color: var(--color-5);
 
     border-color: var(--color-5);
@@ -109,6 +110,10 @@ span {
     margin-left: 5px;
 }
 
+.item_card {
+    margin: 1vw auto;
+}
+
 .card-white {
     background-color: var(--color-5);
     color: var(--color-7);
@@ -116,7 +121,7 @@ span {
     width: 220px;
     height: 420px;
     border-radius: 30px;
-    margin: 1vw;
+    /* margin: auto; */
     position: relative;
 }
 

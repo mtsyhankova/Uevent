@@ -1,0 +1,23 @@
+.button_boc_new_compane {
+    width: 15vw;
+    height: 4vw;
+    position: fixed;
+    background-color: var(--color-2);
+    border-radius: 30px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 999;
+    text-align: center;
+}
+
+.button_boc_new_prouct {
+    width: 15vw;
+    height: 4vw;
+    position: fixed;
+    background-color: var(--color-2);
+    border-radius: 30px;
+    right: 10px;
+    bottom: 5vw;
+    z-index: 999;
+    text-align: center;
+}

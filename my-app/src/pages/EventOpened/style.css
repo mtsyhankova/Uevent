@@ -36,7 +36,12 @@
     flex-direction: row;
 }
 
-.event_opened_date {
+.event_flex_col {
+    display: flex;
+    flex-direction: column;
+}
+
+x .event_opened_date {
     margin-left: 50px;
     font-size: 20px;
     color: var(--color-4);
@@ -96,6 +101,11 @@
     margin-top: 12px;
     font-size: 20px;
     color: var(--color-4);
+}
+
+.event_flex_col .btn2 {
+    margin-bottom: 0px;
+    margin-top: 10px;
 }
 
 /* .event_opened_comment_avatar {

@@ -1,1 +1,1 @@
-export * from "./event-item";
+export * from "./mainpage_event_list";

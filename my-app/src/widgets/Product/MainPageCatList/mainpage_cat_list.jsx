@@ -1,5 +1,5 @@
 import React from 'react';
-import { EventItem } from '../EventItem'
+import { MainPageEventList } from '../MainPageEventList'
 
 import "./style.css"
 
@@ -23,7 +23,7 @@ export const MainPageCatList = () => {
             {itemsBurger.map(item =>
                 <div className='box_product_main_page'>
                     <div className='category_prodyct'>{item.value}</div>
-                    <EventItem eventItems={eventItems} categoruID={item.id} />
+                    <MainPageEventList eventItems={eventItems} categoruID={item.id} />
                 </div>)}
         </div>
     )

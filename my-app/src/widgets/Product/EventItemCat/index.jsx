@@ -1,1 +1,1 @@
-export * from "./event-item";
+export * from "./product-item-cat";
