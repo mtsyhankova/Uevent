@@ -1,22 +1,21 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
-import { SortCategoru } from '../../widgets/Product/FormSortCat';
 import { NavBar } from '../../widgets/User/NavBar'
-import { MainCardCompane } from '../../widgets/Companie/MainCardCompane';
-import { NewCompane, NewProduct } from '../../widgets/Companie/ButtonNew';
+import { MainCardCompany } from '../../widgets/Company/MainCardCompany';
+import { NewCompany, NewEvent } from '../../widgets/Company/ButtonNew';
 import { ProductItemsCat } from '../../widgets/Product/EventItemCat';
 
 // import "./style.css"
 
-export const Companies = () => {
+export const CompaniesPage = () => {
     return (
         <div >
             <NavBar />
-            <MainCardCompane />
-            <NewCompane />
-            <NewProduct />
+            <MainCardCompany />
+            <NewCompany />
+            <NewEvent />
             <ProductItemsCat areYouAuthor={true} />
         </div>
     )
 }
-export default Companies;
+export default CompaniesPage;

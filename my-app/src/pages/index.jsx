@@ -8,7 +8,7 @@ import Regpage from "./Registration/Regpage"
 import Recovery from "./Recovery/Recovery";
 import Profile from "./Profile/Profile";
 import EventOpened from "./EventOpened/EventOpened";
-import Companies from "./Companies/Companiespage";
+import CompaniesPage from "./Companies/CompaniesPage";
 import NotificationsPage from "./Notifications/NotificationsPage";
 
 // const Homepage = lazy(() => import("./Home/Homepage"));
@@ -25,7 +25,7 @@ export const Routing = () => {
 
             <Route path="/" element={<Homepage />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/companies" element={<Companies />} />
+            <Route path="/companies" element={<CompaniesPage />} />
             <Route path="/notifications" element={<NotificationsPage />} />
 
 
