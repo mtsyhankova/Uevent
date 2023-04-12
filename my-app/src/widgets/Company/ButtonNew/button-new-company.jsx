@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import "./style.css"
 
 export const NewCompany = () => {
     return (
-        <div className='button_boc_new_company'>
+        <Link className='button_boc_new_company' to='/company/new'>
             Створити компанію
-        </div>
+        </Link>
     )
 }

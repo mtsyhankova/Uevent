@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-
 import "./style.css"
 
-export const Productspage = () => {
+export const NotFoundPage = () => {
 
     return (
         <div className='box_notfound_page'>
@@ -14,4 +13,4 @@ export const Productspage = () => {
         </div>
     )
 }
-export default Productspage;
+export default NotFoundPage;
