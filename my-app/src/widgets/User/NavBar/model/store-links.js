@@ -11,5 +11,5 @@ export const mainLinksTemp = [
     { value: "Стендап", href: "/", icon: standup },
     { value: "Семінари та тренінги", href: "/", icon: seminar },
     { value: "Спорт", href: "/", icon: sport },
-    { value: "Інше", href: "/", icon: other },
+    { value: "  Усі", href: "/", icon: other },
 ]

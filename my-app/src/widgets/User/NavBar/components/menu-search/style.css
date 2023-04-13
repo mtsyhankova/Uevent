@@ -12,7 +12,7 @@
 
     transform: translateX(330%);
     transition: all 1s;
-    z-index: 100;
+    z-index: 800;
 }
 
 

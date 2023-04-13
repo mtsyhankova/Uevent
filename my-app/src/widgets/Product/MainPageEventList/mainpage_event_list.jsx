@@ -15,7 +15,7 @@ export const MainPageEventList = ({ eventItems, categoruID }) => {
             {eventItems.slice(0, 5).map(item =>
                 <EventItem areYouAuthor={false} date={item.date} name={item.name} location={item.location} city={item.city} price={item.price} />
             )}
-            {eventItems.length > 4 ? <Link to={`/products/${categoruID}`}>
+            {eventItems.length > 4 ? <Link to={`/event/${categoruID}`}>
                 <div className='all_product_one_catgory_button'>
                     Переглянути усі
                     <img className='arrow_all' src={arrow} alt="aboba" />

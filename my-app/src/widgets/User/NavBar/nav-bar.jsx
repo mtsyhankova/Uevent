@@ -9,13 +9,14 @@ import { MenuSearch } from './components'
 import { mainLinksTemp } from "./model/store-links"
 
 import "./style.css"
+import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
     const isAuth = false //  временная переменная определяющая авторизирован ли пользователь 
-    const itemsBurger = [{ value: "1111111", href: "/", icon: "anchor" },
-    { value: "2222222", href: "*", icon: "anchor" },
-    { value: "3333333", href: "/", icon: "anchor" },
-    { value: "4444444", href: "/", icon: "api" },]
+    const itemsBurger = [{ value: "Усі події", href: "/", icon: "anchor" },
+    { value: "Про нас", href: "*", icon: "anchor" },
+    { value: "Контакти", href: "/", icon: "anchor" },
+    { value: "Оплата", href: "/", icon: "api" },]
 
     const [menuActive, setMenuActive] = useState(false);
     const [menuSearchActive, setMenuSearchActive] = useState(false);
@@ -23,9 +24,10 @@ export const NavBar = () => {
         <nav className='nav_bar_box'>
             <div>
                 <div className='header_box_navBar'>
-                    <div>
+                    <div className='flex_row_nv'>
                         <BurgerButton active={menuActive} setActive={setMenuActive} />
                         <MenuBurger active={menuActive} setActive={setMenuActive} header={'ddeded'} items={itemsBurger} />
+                        <Link to='/' className='home_nema'>ᑗᙍᐻᙍᘉᖶ</Link>
                     </div>
 
                     {isAuth === true ?

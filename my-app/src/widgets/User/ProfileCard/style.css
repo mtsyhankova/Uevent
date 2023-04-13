@@ -56,3 +56,12 @@
     text-align: center;
     background-image: url("./assets/free.png");
 }
+
+.box_link_button_pr {
+    display: flex;
+    flex-direction: column;
+}
+
+.box_link_button_pr a {
+    margin-bottom: 5px;
+}

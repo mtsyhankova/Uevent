@@ -14,7 +14,7 @@ export const MainCardCompany = () => {
         location: 'dwdwdwd'
     }
 
-    return (<div>
+    return (
         <div className='card_box_pr'>
             <div>  <img className='img_avatar_pr' src={companyAvatar} alt="aboba" /></div>
             <div className='data_box_cmp'>
@@ -29,9 +29,9 @@ export const MainCardCompany = () => {
                 <p className='data_cmp'>{companyData.email}</p>
                 <p className='data_cmp'>{companyData.location}</p>
             </div>
-            <Link className='setting_link_cmp' to='#'>
+            <Link className='setting_link_cmp' to='/company/setting'>
                 <img className='img_setting_cmp' src={settings} alt="aboba" />
             </Link>
         </div>
-    </div>)
+    )
 }

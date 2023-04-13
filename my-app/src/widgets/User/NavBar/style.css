@@ -24,6 +24,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+}
+
+.flex_row_nv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.home_nema {
+    font-size: 40px;
+    margin-left: 40px;
+}
+
+.home_nema:hover {
+    color: var(--color-6);
 }
 
 .marg_bot_aut {

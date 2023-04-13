@@ -4,11 +4,13 @@ import OtherEventsList from '../../Product/OtherEventsList/other_events_list';
 import CompaniesList from '../../Product/CompaniesList/companies_list';
 import userAvatar from '../../../asssets/User/luffy.jpg'
 
+import settings from './assets/settings.png'
+
 import "./style.css"
 
 export const ProfileCard = () => {
     const UpperText1 = "Історія покупок"
-    const UpperText2 = "Мої компанії"
+    // const UpperText2 = "Мої компанії"
     const countMassege = 100;// количство непрочитаніх сообщ
     const userData = { name: 'abobus1', status: 'dwdwddwdvv f ugfufefuegfegfg f eugfe  fuge egf  fuegf efuegf ue fgeugfe   egfe fugfug fu' }
 
@@ -20,14 +22,18 @@ export const ProfileCard = () => {
                     <p className='name_user_pr'>{userData.name}</p>
                     <p className='status_user_pr'>{userData.status}</p>
                 </div>
-                <Link className='message_link_pr' to='/notifications'>
-                    {/* <img className='message_img' src={luffy} alt="aboba" /> */}
-                    <div className='count_message_block_pr'>
-                        {countMassege > 99 ? <p>99+</p> : <p>{countMassege}</p>}
-                    </div>
-                </Link>
+                <div className='box_link_button_pr'>
+                    <Link className='message_link_pr' to='/notifications'>
+                        {/* <img className='message_img' src={luffy} alt="aboba" /> */}
+                        <div className='count_message_block_pr'>
+                            {countMassege > 99 ? <p>99+</p> : <p>{countMassege}</p>}
+                        </div>
+                    </Link>
+                    <Link className='setting_link_cmp' to='/profile/settings'>
+                        <img className='img_setting_cmp' src={settings} alt="aboba" />
+                    </Link>
+                </div>
             </div>
-
             <OtherEventsList UpperText={UpperText1} />
             <CompaniesList />
         </div>)
