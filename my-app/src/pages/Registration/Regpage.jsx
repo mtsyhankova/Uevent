@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
+import { registration } from "./model/store"
+import { useNavigate } from 'react-router-dom';
 
 import "./style.css"
 
 const Regpage = () => {
-    const [/*email,*/ setEmail] = useState([]);
-    const [/*password,*/ setPassword] = useState([]);
-    const [error/*, setError*/] = useState('');
+    const [email, setEmail] = useState([]);
+    const [password, setPassword] = useState([]);
+    const [error, setError] = useState('');
+    let navigate = useNavigate();
 
-    const loginFunc = async event => {
+    const signupFunc = async event => {
         event.preventDefault();
+        const aboba = await registration(email, password);
+
+        if (aboba !== undefined) {
+            setError(aboba.response.data.message)
+        }
+        else {
+            navigate('/home');
+        }
     }
 
     return (
@@ -27,7 +38,7 @@ const Regpage = () => {
 
                 <div className='auth_error'>{error}</div>
 
-                <div className='aboba'><button className='reg_button' onClick={loginFunc}>Зареєструватися</button></div>
+                <div className='aboba'><button onClick={signupFunc} className='reg_button' >Зареєструватися</button></div>
             </form>
         </div>
     )

@@ -30,7 +30,7 @@ export const NavBar = () => {
                         <Link to='/' className='home_nema'>ᑗᙍᐻᙍᘉᖶ</Link>
                     </div>
 
-                    {isAuth === true ?
+                    {isAuth === false ?
                         <div className="marg_bot_aut"><AuthButtons /></div>
                         :
                         <div className="marg_bot_aut"><ProfileExit /></div>}

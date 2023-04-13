@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
+import { login } from "./model/store"
+import { useNavigate } from 'react-router-dom';
+
 
 import "./style.css"
 
 const Authpage = () => {
-    const [/*email,*/ setEmail] = useState([]);
-    const [/*password,*/ setPassword] = useState([]);
-    const [error/*, setError*/] = useState('');
+    const [email, setEmail] = useState([]);
+    const [password, setPassword] = useState([]);
+    const [error, setError] = useState('');
+
+    let navigate = useNavigate();
 
     const loginFunc = async event => {
         event.preventDefault();
+        const aboba = await login(email, password);
+
+        if (aboba !== undefined) {
+            setError(aboba.response.data.message)
+        }
+        else {
+            navigate('/home');
+        }
     }
 
     return (
