@@ -10,8 +10,8 @@ class UserController {
             if (!errors.isEmpty()) {
                 return next(ApiError.BadRequest('Validation error', errors.array()))
             }
-            const { email, password } = req.body
-            const userData = await UserServices.registration(email, password)
+            const { email, password, name, status, img } = req.body
+            const userData = await UserServices.registration(email, password, name, status, img)
             res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
             return res.json(userData)
         } catch (e) {
@@ -66,21 +66,17 @@ class UserController {
         }
     }
 
-    async getMembers(req, res, next) {
+    async updUser(req, res, next) {
         try {
-            const users = await UserServices.findOne()
-            return res.json(users)
+            const { refreshToken } = req.cookies
+            const {img,name,status} = req.body
+            // console.log(refreshToken)
+            const userData = await UserServices.updUser(refreshToken, img, name, status ,refreshToken)
+            return res.json(userData)
         }
         catch (e) {
             next(e)
         }
-    }
-    async acceptInvite(req, res, next){
-        const { link } = req.body
-        const refreshToken = req.cookies.refreshToken
-        console.log(link)
-        const calendars = await UserServices.acceptInvite(link, refreshToken)
-        return calendars
     }
 }
 
