@@ -1,8 +1,0 @@
-.box_one_category_product_c {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 80vw;
-    margin: auto;
-}
