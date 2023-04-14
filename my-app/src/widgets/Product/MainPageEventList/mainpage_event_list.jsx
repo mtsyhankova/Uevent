@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import luffy from './assets/luffy.jpg'
+// import { useNavigate } from 'react-router-dom';
+// import luffy from './assets/luffy.jpg'
 import arrow from './assets/right-arrow.png'
 import EventItem from '../EventItem/event_item';
 
 import "./style.css"
 
 export const MainPageEventList = ({ eventItems, categoruID }) => {
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
 
     return (
         <div className='box_one_category_product'>
