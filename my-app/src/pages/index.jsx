@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router";
-// import { lazy } from "react";
 import Homepage from "./Home/Homepage";
-import NotFoundPage from "./NotFound/NotFoundpage";
+import NotFoundPage from "./NotFound/NotFoundPage";
 import Productspage from "./Products/Productpage";
 import Authpage from "./Authotization/Authpage";
 import Regpage from "./Registration/Regpage";
@@ -10,15 +9,11 @@ import Profile from "./Profile/Profile";
 import EventOpened from "./EventOpened/EventOpened";
 import CompaniesPage from "./Companies/CompaniesPage";
 import NotificationsPage from "./Notifications/NotificationsPage";
-// import EventNewPage from "./EventNew/EventNewPage";
 import SettingCompanyPage from "./SettingCompany/SettingCompanyPage";
 import ProfileSettingsPage from "./ProfileSettings/ProfileSettingsPage";
 import EventSettingsPage from "./EventSettings/EventSettingsPage";
 import NewCompany from "./NewCompanyPage/NewCompany";
 import { NewEvent } from "./NewEventPage/NewEvent";
-
-// const Homepage = lazy(() => import("./Home/Homepage"));
-// const Notfoundpage = lazy(() => import("./Notfound/Notfoundpage"));
 
 export const Routing = () => {
     return (
