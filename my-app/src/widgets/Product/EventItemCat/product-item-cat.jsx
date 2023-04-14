@@ -36,8 +36,8 @@ export const ProductItemsCat = ({ areYouAuthor }) => {
     return (
         <div>
             <div className='box_one_category_product_c'>
-                {eventItems.slice(page * 12, page * 12 + 12).map(item =>
-                    <EventItem areYouAuthor={areYouAuthor} date={item.date} name={item.name} location={item.location} city={item.city} price={item.price} />
+                {eventItems.slice(page * 12, page * 12 + 12).map((item, index) =>
+                    <EventItem key={index} areYouAuthor={areYouAuthor} date={item.date} name={item.name} location={item.location} city={item.city} price={item.price} />
                 )}
             </div>
             <Pagination quantity={eventItems.length} numberForPage={12} current={page} change={setPage} />

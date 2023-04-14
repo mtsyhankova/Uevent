@@ -7,8 +7,8 @@ import "./style.css"
 export const LinksButtonNavBar = ({ links }) => {
     return (
         <div className='box_links'>
-            {links.map(item =>
-                <Link to="/f,j,f">
+            {links.map((item, index) =>
+                <Link key={index} to="/f,j,f">
                     <div className='button_links_navBar'>
                         <img src={item.icon} className='img_links' alt="aboba" />
                         {item.value}

@@ -7,6 +7,7 @@ export default class AuthService {
     }
 
     static async registration(email, password) {
+        console.log(email, password)
         return $api.post('/registration', { email, password })
     }
 

@@ -11,10 +11,10 @@ export const MenuBurger = ({ active, setActive, header, items }) => {
                 <div className='menu__content' onClick={e => e.stopPropagation()}>
                     <div className='menu__header'>{header}</div>
                     <ul>
-                        {items.map(item =>
-                            <li>
+                        {items.map((item, index) =>
+                            <li key={index} >
                                 <Link to={item.href} className='menu__link'>{item.value}/</Link>
-                                <i class="large material-icons">insert_chart</i>
+                                <i className="large material-icons">insert_chart</i>
                             </li>)}
                     </ul>
                 </div>

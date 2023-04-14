@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { NavBar } from '../../widgets/User/NavBar'
-// import { Footer } from '../../widgets/User/Footer';
-import Pagination from '../../widgets/Product/Pagination/pagination';
 import LocationMap from '../../widgets/Product/LocationMap/location_map';
 import Comments from '../../widgets/User/Comments/comments';
 import SubsList from '../../widgets/User/SubsList/subs_list';

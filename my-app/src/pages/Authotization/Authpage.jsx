@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { login } from "./model/store"
+import React, { useState, useContext } from 'react';
+import { login } from "./store"
 import { useNavigate } from 'react-router-dom';
+import { Context } from "../../";
 
 
 import "./style.css"
@@ -9,18 +10,19 @@ const Authpage = () => {
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
     const [error, setError] = useState('');
+    const { store } = useContext(Context)
 
     let navigate = useNavigate();
 
     const loginFunc = async event => {
         event.preventDefault();
-        const aboba = await login(email, password);
+        const errorMessage = await login(email, password, store);
 
-        if (aboba !== undefined) {
-            setError(aboba.response.data.message)
+        if (errorMessage !== true) {
+            setError(errorMessage.response.data.message)
         }
         else {
-            navigate('/home');
+            navigate('/');
         }
     }
 

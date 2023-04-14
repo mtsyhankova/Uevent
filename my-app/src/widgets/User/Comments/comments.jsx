@@ -9,8 +9,8 @@ const Comments = () => {
     return (
         <div className='event_opened_subslist'>
             <p className='event_opened_description'>Коментарі</p>
-            {commentsList.map(item =>
-                <div className='event_opened_flex_row'>
+            {commentsList.map((item, index) =>
+                <div className='event_opened_flex_row' key={index}>
                     <img src={luffy} alt="aboba" className='event_opened_comment_avatar' />
 
                     <div className='event_opened_flex_col'>
