@@ -2,7 +2,7 @@ module.exports = class UserDto {
     email;
     id;
     isActivated;
-    login;
+    name;
     status
 
     constructor(model) {
@@ -10,6 +10,6 @@ module.exports = class UserDto {
         this.id = model._id
         this.activated = model.activated
         this.status = model.status
-        this.login = model.login
+        this.name = model.name
     }
 }
