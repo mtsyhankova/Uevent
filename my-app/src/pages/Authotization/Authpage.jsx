@@ -17,6 +17,7 @@ const Authpage = () => {
 
     const loginFunc = async event => {
         event.preventDefault();
+
         const errorMessage = await store.login(email, password);
 
         if (errorMessage !== true) {

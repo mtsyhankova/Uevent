@@ -33,7 +33,7 @@ export const Routing = () => {
 
             <Route path="/" element={<Homepage />} />
 
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/profile/settings" element={<ProfileSettingsPage />} />
 

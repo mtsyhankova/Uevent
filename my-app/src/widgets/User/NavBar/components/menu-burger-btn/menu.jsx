@@ -28,8 +28,9 @@ export const MenuBurger = ({ active, setActive, header, items }) => {
                     <ul>
                         {items.map((item, index) =>
                             <li key={index} >
-                                <div className='menu__link'>{item.value}/</div>
-                                <i className="large material-icons">insert_chart</i>
+                                <Link to={item.href}> <div className='menu__link'>{item.value}</div>
+                                </Link>
+
                             </li>)}
                     </ul>
                 </div>

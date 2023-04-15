@@ -12,7 +12,8 @@ export const ProfileExit = () => {
     const { store } = useContext(Context)
 
     let navigate = useNavigate();
-    const logo = require('./assets/luffy.jpg');
+    const logo = store.user.img; /////////////////////////aboba 
+    const link = "/profile/" + store.user.id
     // const userInfo = JSON.parse(JSON.stringify(store.user))
     // const aaa = ('../../' + userInfo.img).toString()
     // // // const logo1 = userInfo.toString()
@@ -31,7 +32,7 @@ export const ProfileExit = () => {
 
     return (
         <div className='flex_row'>
-            <Link to="/profile" className='profile_btn'>
+            <Link to={link} className='profile_btn'>
                 <img className='profile_img' src={logo} alt="aboba" />
             </Link>
             <Link onClick={exitFunc} to="/auth" className='authbtn'>

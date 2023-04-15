@@ -11,12 +11,20 @@ export const ProfileSettingsForm = () => {
     const [userStatus, setUserStatus] = useState(store.user.status ? store.user.status : '');
     const [userEmail, setUserEmail] = useState(store.user.email)
 
-    const [picture, setPicture] = useState();
-    const [img, setImg] = useState();
+    const [picture, setPicture] = useState([]);
+    // const [img, setImg] = useState();
+    const img = store.user.img
+
 
     const updateUser = async event => {
         event.preventDefault();
-        const errorMessage = await store.updateUser(picture, userName, userStatus);
+
+        const files = picture
+        console.log('-------------------------------')
+        console.log(files)
+        console.log('===============================')
+        console.log(typeof (files))
+        const errorMessage = await store.updateUser(files, userName, userStatus);
 
         // if (errorMessage !== true) {
         //     setError(errorMessage.response.data.message)
@@ -26,22 +34,29 @@ export const ProfileSettingsForm = () => {
         // }
 
     }
-    const onChangePicture = e => {
-        console.log('picture: ', picture);
-        setPicture(e.target.files[0]);
-        setImg(URL.createObjectURL(e.target.files[0]));
 
-        console.log(picture)
-    };
+
+
+    const fileUploadHandler = async event => {
+
+    }
+
+
+    // const onChangePicture = e => {
+    //     // console.log('picture: ', picture);
+    //     setImg(URL.createObjectURL(e.target.files[0]));
+
+    //     // console.log(picture)
+    // };
 
     return (
         <form className='profset_box'>
             <p className='profset_upper_text'>Налаштування профілю</p>
-
-            <img className='profset_avatar' src={img} alt="aboba" />
+            {console.log(img)}
+            <img className='profset_avatar' alt="aboba" />
             <label className="profset_avatar_label">
                 Загрузити аватар
-                <input type="file" id="file_in" className="profset_avatar_input" onChange={onChangePicture} />
+                <input type="file" name="file" onChange={(event) => setPicture(event.target.files)} id="file_in" className="profset_avatar_input" />
             </label>
 
             <div className='profset_editable_box'>
@@ -58,7 +73,8 @@ export const ProfileSettingsForm = () => {
                     </div>
                 </div>
             </div>
-            <button className='profset_button' onClick={updateUser}>Змінити данні</button>
+            <button className='profset_button' onClick={updateUser} >Змінити данні</button>
+
         </form>
     )
 }

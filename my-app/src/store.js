@@ -34,7 +34,9 @@ export default class Store {
 
     async checkAuth() {
         this.setLoading(true)
+
         try {
+
             const response = await axios.get(`${API_URL}/refresh`, { withCredentials: true })
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
@@ -97,10 +99,17 @@ export default class Store {
 
 
     /////////////////////////////////////////////////USER///////////////////////////////////////////
-    async updateUser(img, name, status) {
+    async updateUser(files, name, status) {
         try {
-            console.log(img, name, status)
-            const response = await UserService.update(img, name, status)
+            console.log(files[0])
+            const formData = new FormData()
+
+            formData.append('name', name)
+            formData.append('status', status)
+            formData.append('file', files[0])
+            console.log(formData)
+            const response = await UserService.update(formData)
+            console.log(response)
 
             // localStorage.setItem('token', response.data.accessToken)
             // this.setAuth(true)

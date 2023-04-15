@@ -12,6 +12,6 @@ module.exports = class UserDto {
         this.activated = model.activated
         this.status = model.status
         this.name = model.name
-        this.img = model.img
+        this.img =model.img
     }
 }
