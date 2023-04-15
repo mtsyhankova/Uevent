@@ -15,20 +15,14 @@ export const Context = createContext({
     store
 })
 
+
+
 root.render(
-    <React.StrictMode>
+    <Context.Provider value={{
+        store
+    }}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </React.StrictMode>
+    </Context.Provider>
 );
-
-
-//  ReactDOM.render(
-//     <React.StrictMode>
-//         <BrowserRouter>
-//         <App />
-//         </BrowserRouter>
-//     </React.StrictMode>,
-//      document.getElementById('root')
-//  );

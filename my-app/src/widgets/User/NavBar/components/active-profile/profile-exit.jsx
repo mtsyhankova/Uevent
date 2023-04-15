@@ -1,17 +1,40 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom'
-import luffy from './assets/luffy.jpg'
+import React, { useContext } from 'react';
+import { Link, useNavigate, } from 'react-router-dom';
+
+import { Context } from "../../../../../";
+
+// import luffy from './assets/luffy.jpg'
 
 import "./style.css"
 
 export const ProfileExit = () => {
+    const { store } = useContext(Context)
+
+    let navigate = useNavigate();
+    const logo = require('./assets/luffy.jpg');
+    // const userInfo = JSON.parse(JSON.stringify(store.user))
+    // const aaa = ('../../' + userInfo.img).toString()
+    // // // const logo1 = userInfo.toString()
+    // console.log(store.user.img)
+    // //let logo2 = require(store.user.img)
+    // console.log('==============')
+    // console.log(logo2)
+    // console.log(typeof (logo2))
+    // console.log(typeof (logo2))
+    // userInfo = require(logo);
+    // console.log(userInfo)
+    const exitFunc = async event => {
+        await store.logout()
+        navigate('/');
+    }
+
     return (
         <div className='flex_row'>
             <Link to="/profile" className='profile_btn'>
-                <img className='profile_img' src={luffy} alt="aboba" />
+                <img className='profile_img' src={logo} alt="aboba" />
             </Link>
-            <Link to="/auth" className='authbtn'>
+            <Link onClick={exitFunc} to="/auth" className='authbtn'>
                 Вихід
             </Link>
         </div>

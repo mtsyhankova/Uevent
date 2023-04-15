@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { registration } from "./model/store"
 import { useNavigate } from 'react-router-dom';
+import { Context } from "../../";
 
 import "./style.css"
 
@@ -8,17 +9,18 @@ const Regpage = () => {
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
     const [error, setError] = useState('');
+    const { store } = useContext(Context)
     let navigate = useNavigate();
 
     const signupFunc = async event => {
         event.preventDefault();
-        const aboba = await registration(email, password);
+        const aboba = await store.registration(email, password);
 
-        if (aboba !== undefined) {
+        if (aboba !== true) {
             setError(aboba.response.data.message)
         }
         else {
-            navigate('/home');
+            navigate('/');
         }
     }
 

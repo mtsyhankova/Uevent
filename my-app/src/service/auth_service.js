@@ -1,13 +1,11 @@
 import $api from '../http/index'
-// import { AxiosResponse } from 'axios'
 
 export default class AuthService {
-    static async login(email, password) {
+    static async update(email, password) {
         return $api.post('/login', { email, password })
     }
 
     static async registration(email, password) {
-        console.log(email, password)
         return $api.post('/registration', { email, password })
     }
 

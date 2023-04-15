@@ -11,9 +11,9 @@ const Pagination = ({ quantity, numberForPage, current, change }) => {
 
     return (
         <div className='pages_container'>
-            {pagesArray.map((item, index) =>
+            {pagesArray.map(page =>
                 //eslint-disable-next-line
-                <span key={index} onClick={() => change(page - 1)} className={current + 1 == page ? 'page_current' : 'page_item'} key={page}><p>{page}</p></span>
+                <span onClick={() => change(page - 1)} className={current + 1 == page ? 'page_current' : 'page_item'} key={page}><p>{page}</p></span>
             )}
         </div>
     )

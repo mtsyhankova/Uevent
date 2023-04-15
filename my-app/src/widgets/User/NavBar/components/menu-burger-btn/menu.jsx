@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
+import { Context } from "../../../../../";
 
 import "./style.css"
 
 
 export const MenuBurger = ({ active, setActive, header, items }) => {
+    const { store } = useContext(Context)
+    let navigate = useNavigate();
+
+    const checkAuth = async event => {
+        event.preventDefault();
+        if (!localStorage.getItem('token')) {
+            navigate('/auth');
+        } else {
+            navigate('/profile');
+        }
+
+    }
+
     return (
         < div className={active ? ' menu_burger active' : ' menu_burger'} onClick={() => setActive(false)} >
             <div className='menu_blur'>
                 <div className='menu__content' onClick={e => e.stopPropagation()}>
-                    <div className='menu__header'>{header}</div>
+                    <Link to='/profile' className='menu__header' onClick={checkAuth}>Особистий кабінет</Link>
                     <ul>
                         {items.map((item, index) =>
                             <li key={index} >
-                                <Link to={item.href} className='menu__link'>{item.value}/</Link>
+                                <div className='menu__link'>{item.value}/</div>
                                 <i className="large material-icons">insert_chart</i>
                             </li>)}
                     </ul>
