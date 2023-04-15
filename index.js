@@ -5,10 +5,12 @@ const cookieParser = require('cookie-parser')
 const errorsMiddleware = require('./middleware/error-middleware')
 const router = require('./router/index')
 const cors = require('cors')
+const fileUpload = require('express-fileupload')
 const PORT = process.env.PORT || 8000
 
 const app = express()
 
+app.use(fileUpload)
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({

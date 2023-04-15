@@ -3,6 +3,7 @@ module.exports = class UserDto {
     id;
     isActivated;
     name;
+    img;
     status
 
     constructor(model) {
@@ -11,5 +12,6 @@ module.exports = class UserDto {
         this.activated = model.activated
         this.status = model.status
         this.name = model.name
+        this.img =model.img
     }
 }
