@@ -4,6 +4,7 @@ import luffy from '../../../asssets/User/luffy.jpg'
 
 const EventItem = ({ areYouAuthor, date, name, location, city, price }) => {
     let navigate = useNavigate();
+    let isSubscribed = false;
 
     return (
         <div className='item_card'>
@@ -22,7 +23,7 @@ const EventItem = ({ areYouAuthor, date, name, location, city, price }) => {
                         <span className='event-button btn2' onClick={() => { navigate(`/event/edit/${date}/${name}/${location}/${city}/${price}/`) }}>Редагувати</span>
                         <span className='event-button btn2' onClick={() => { navigate(`/event/delete/${date}/${name}/${location}/${city}/${price}/`) }}>Видалити</span>
                     </div>
-                        : <span className='event-button' onClick={() => { navigate(`/event/open/${date}/${name}/${location}/${city}/${price}/`) }}>Придбати</span>
+                        : <span className='event-button' onClick={() => { navigate(`/event/open/${date}/${name}/${location}/${city}/${price}/${isSubscribed}`) }}>Придбати</span>
                     }
                 </div>
             </div>

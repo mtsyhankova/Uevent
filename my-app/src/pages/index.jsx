@@ -14,12 +14,10 @@ import SettingCompanyPage from "./SettingCompany/SettingCompanyPage";
 import ProfileSettingsPage from "./ProfileSettings/ProfileSettingsPage";
 import EventSettingsPage from "./EventSettings/EventSettingsPage";
 import NewCompany from "./NewCompanyPage/NewCompany";
+import PaymentPage from "./Payment/PaymentPage";
 import { NewEvent } from "./NewEventPage/NewEvent";
-import { NavBar } from "../widgets/User/NavBar";
 
 export const Routing = () => {
-
-
     return (
         <Routes>
             <Route path="*" element={<NotFoundPage />} />
@@ -38,10 +36,10 @@ export const Routing = () => {
             <Route path="/company/setting" element={<SettingCompanyPage />} />
             <Route path="/company/new" element={<NewCompany />} />
 
-
-            <Route path="/event/open/:date/:name/:location/:city/:price" element={<EventOpened />} />
+            <Route path="/event/payment/:date/:name/:location/:city/:price" element={<PaymentPage />} />
+            <Route path="/event/open/:date/:name/:location/:city/:price/:isSubscribed" element={<EventOpened />} />
             <Route path="/event/edit/:date/:name/:location/:city/:price" element={<EventSettingsPage />} />
-            {/* потом тут будет только /:id */}
+            {/* потом тут будет только /:id и /:token */}
             <Route path="/event/:idCAt" element={<Productspage />} />
             <Route path="/event/new" element={<NewEvent />} />
         </Routes>

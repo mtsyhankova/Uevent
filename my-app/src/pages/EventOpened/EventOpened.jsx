@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { NavBar } from '../../widgets/User/NavBar'
 import LocationMap from '../../widgets/Product/LocationMap/location_map';
@@ -11,20 +11,29 @@ import "./style.css"
 
 const EventOpened = () => {
     const { date, name, location, city, price } = useParams();
-    const [buttonText, setButtonText] = useState(price === "Безкоштовно" ? `${price}` : `${price} грн`);
-    const [isSubscribed, setIsSubscribed] = useState(false);
-    // const [eventsPage, setEventsPage] = useState([0]);
+    let { isSubscribed } = useParams();
+    const [isSubscribedVar, setIsSubscribedVar] = useState(isSubscribed);
+    const [buttonText, setButtonText] = useState();
     let navigate = useNavigate();
 
+    useEffect(() => {
+        if(isSubscribedVar === "true") {
+            setButtonText("Ви підписані");
+        }
+        else {
+            setButtonText(price === "Безкоштовно" ? `${price}` : `${price} грн`);
+        }
+      }, [isSubscribedVar, price])
+
     function onhover() {
-        if (!isSubscribed)
+        if (isSubscribedVar !== "true")
             setButtonText("Підписатися");
         else
             setButtonText("Відписатися");
     }
 
     function offhover() {
-        if (!isSubscribed)
+        if (isSubscribedVar !== "true")
             setButtonText(price === "Безкоштовно" ? `${price}` : `${price} грн`);
         else
             setButtonText("Ви підписані");
@@ -35,15 +44,15 @@ const EventOpened = () => {
         // if (!localStorage.getItem('token')) {
         //     navigate('/auth');
         // } else {
-        switch (isSubscribed) {
-            case true: {
-                setIsSubscribed(false); break;
+        switch (isSubscribedVar) {
+            case "true": {
+                setIsSubscribedVar("false"); break;
             }
             default: {
                 if (price !== "Безкоштовно")
-                    navigate(`/payment/${price}`);
+                    navigate(`/event/payment/${date}/${name}/${location}/${city}/${price}`);
                 else
-                    setIsSubscribed(true);
+                    setIsSubscribedVar("true");
             }
         }
         // }
