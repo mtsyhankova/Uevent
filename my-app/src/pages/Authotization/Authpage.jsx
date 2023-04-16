@@ -1,26 +1,30 @@
-import React, { useState } from 'react';
-import { login } from "./model/store"
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Context } from "../../";
 
 
 import "./style.css"
 
 const Authpage = () => {
+    const { store } = useContext(Context)
+
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
     const [error, setError] = useState('');
+
 
     let navigate = useNavigate();
 
     const loginFunc = async event => {
         event.preventDefault();
-        const aboba = await login(email, password);
 
-        if (aboba !== undefined) {
-            setError(aboba.response.data.message)
+        const errorMessage = await store.login(email, password);
+
+        if (errorMessage !== true) {
+            setError(errorMessage.response.data.message)
         }
         else {
-            navigate('/home');
+            navigate('/');
         }
     }
 
@@ -31,11 +35,11 @@ const Authpage = () => {
 
                 <div className='auth_login'>
                     <span className='auth_span'>Ел. пошта:</span>
-                    <input className='auth_input' required type="text" placeholder='enter email...' onChange={e => setEmail(e.target.value)} />
+                    <input className='auth_input' required type="email" placeholder='enter email...' onChange={e => setEmail(e.target.value)} />
                 </div>
                 <div className='auth_pass'>
                     <span className='auth_span'>Пароль:</span>
-                    <input className='auth_input' required type="text" placeholder='enter password...' onChange={e => setPassword(e.target.value)} />
+                    <input className='auth_input' required type="password" placeholder='enter password...' onChange={e => setPassword(e.target.value)} />
                 </div>
 
                 <div className='auth_error'>{error}</div>

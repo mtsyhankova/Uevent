@@ -16,8 +16,8 @@ const CompaniesList = () => {
         <div className='event_opened_subslist'>
             <p className='event_opened_description'>Мої компанії</p>
             <div className='event_opened_flex_row'>
-                {companies.slice(page * 3, page * 3 + 3).map(item =>
-                    <CompanyItem name={item.name} location={item.location} email={item.email} />
+                {companies.slice(page * 3, page * 3 + 3).map((item, index) =>
+                    <CompanyItem name={item.name} key={index} location={item.location} email={item.email} />
                 )}
             </div>
             <Pagination quantity={companies.length} numberForPage={3} current={page} change={setPage} />

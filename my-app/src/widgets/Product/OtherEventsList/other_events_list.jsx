@@ -18,8 +18,8 @@ const OtherEventsList = ({ UpperText }) => {
         <div className='event_opened_subslist'>
             <p className='event_opened_description'>{UpperText}</p>
             <div className='event_opened_flex_row'>
-                {organizersEvents.slice(eventsPage * 3, eventsPage * 3 + 3).map(item =>
-                    <EventItem areYouAuthor={false} date={item.date} name={item.name} location={item.location} city={item.city} price={item.price} />
+                {organizersEvents.slice(eventsPage * 3, eventsPage * 3 + 3).map((item, index) =>
+                    <EventItem areYouAuthor={false} key={index} date={item.date} name={item.name} location={item.location} city={item.city} price={item.price} />
                 )}
             </div>
             <Pagination quantity={organizersEvents.length} numberForPage={3} current={eventsPage} change={setEventsPage} />

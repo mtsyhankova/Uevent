@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router";
+import React from 'react';
 import Homepage from "./Home/Homepage";
 import NotFoundPage from "./NotFound/NotFoundPage";
 import Productspage from "./Products/Productpage";
@@ -14,8 +15,11 @@ import ProfileSettingsPage from "./ProfileSettings/ProfileSettingsPage";
 import EventSettingsPage from "./EventSettings/EventSettingsPage";
 import NewCompany from "./NewCompanyPage/NewCompany";
 import { NewEvent } from "./NewEventPage/NewEvent";
+import { NavBar } from "../widgets/User/NavBar";
 
 export const Routing = () => {
+
+
     return (
         <Routes>
             <Route path="*" element={<NotFoundPage />} />
@@ -26,7 +30,7 @@ export const Routing = () => {
 
             <Route path="/" element={<Homepage />} />
 
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/profile/settings" element={<ProfileSettingsPage />} />
 

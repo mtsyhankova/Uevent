@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Context } from "../../..";
+
 import OtherEventsList from '../../Product/OtherEventsList/other_events_list';
 import CompaniesList from '../../Product/CompaniesList/companies_list';
-import userAvatar from '../../../asssets/User/luffy.jpg'
 
+import userAvatar from '../../../asssets/User/luffy.jpg'
 import settings from './assets/settings.png'
 
 import "./style.css"
 
 export const ProfileCard = () => {
+    const { store } = useContext(Context)
+
+
     const UpperText1 = "Історія покупок"
     // const UpperText2 = "Мої компанії"
     const countMassege = 100;// количство непрочитаніх сообщ
@@ -19,8 +24,8 @@ export const ProfileCard = () => {
             <div className='card_box_pr'>
                 <div>  <img className='img_avatar_pr' src={userAvatar} alt="aboba" /></div>
                 <div className='data_user_pr'>
-                    <p className='name_user_pr'>{userData.name}</p>
-                    <p className='status_user_pr'>{userData.status}</p>
+                    <p className='name_user_pr'>{store.user.name}</p>
+                    <p className='status_user_pr'>Статус:{store.user.status}</p>
                 </div>
                 <div className='box_link_button_pr'>
                     <Link className='message_link_pr' to='/notifications'>

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useParams/*, useNavigate*/ } from 'react-router-dom';
 import { NavBar } from '../../widgets/User/NavBar'
-// import { Footer } from '../../widgets/User/Footer';
-// import Pagination from '../../widgets/Product/Pagination/pagination';
 import LocationMap from '../../widgets/Product/LocationMap/location_map';
 import Comments from '../../widgets/User/Comments/comments';
 import SubsList from '../../widgets/User/SubsList/subs_list';
@@ -23,6 +21,16 @@ const EventOpened = () => {
 
     function offhover() {
         setButtonText(`${price} грн`);
+    }
+
+    const checkAuth = async event => {
+        event.preventDefault();
+        if (!localStorage.getItem('token')) {
+            navigate('/auth');
+        } else {
+            navigate(`/`)
+        }
+
     }
 
     return (
@@ -46,7 +54,7 @@ const EventOpened = () => {
                             <p className='event_opened_date'>{location}, {city}</p>
                         </div>
 
-                        <span className='event_opened_button' onMouseEnter={onhover} onMouseLeave={offhover}>{buttonText}</span>
+                        <span className='event_opened_button' onClick={checkAuth} onMouseEnter={onhover} onMouseLeave={offhover}>{buttonText}</span>
 
                         <p className='event_opened_description'>Опис події</p>
                         <p className='event_opened_date'> бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла</p>

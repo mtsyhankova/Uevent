@@ -12,7 +12,7 @@ export const EventSettingsForm = () => {
                     {/*  <input className='input_file_from_cmp' type="file" /> */}
                     <label class="feedback_label">
                         Загрузити файл
-                        <input type="file" id="file_in" class="feedback_file" />
+                        <input type="file" id="file_in" className="feedback_file" />
                     </label>
                 </div>
                 <div className='box_input_from_cmp'>

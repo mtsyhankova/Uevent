@@ -1,6 +1,7 @@
 const UserServices = require('../services/user-service')
 const { validationResult } = require('express-validator')
 const ApiError = require('../exceptions/api-error')
+const tokenService = require('../services/token-service')
 
 class UserController {
     async registration(req, res, next) {
@@ -10,8 +11,8 @@ class UserController {
             if (!errors.isEmpty()) {
                 return next(ApiError.BadRequest('Validation error', errors.array()))
             }
-            const { email, password } = req.body
-            const userData = await UserServices.registration(email, password)
+            const { email, password, name, status } = req.body
+            const userData = await UserServices.registration(email, password, name, status)
             res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
             return res.json(userData)
         } catch (e) {
@@ -66,21 +67,44 @@ class UserController {
         }
     }
 
-    async getMembers(req, res, next) {
+    async updUser(req, res, next) {
         try {
-            const users = await UserServices.findOne()
-            return res.json(users)
+            console.log(req.files)
+            const { refreshToken } = req.cookies
+            console.log(req.body)
+            const formData = req.body
+            console.log('form data', formData.file)
+            const imageName = req.files.fieldname
+            const basePath = `${req.protocol}://${req.get('host')}/public/upload/${imageName}`
+            // console.log(refreshToken)
+            const userData = await UserServices.updUser(refreshToken, formData.name, formData.status, basePath)
+            return res.json(userData)
         }
         catch (e) {
             next(e)
         }
     }
+
     async acceptInvite(req, res, next){
         const { link } = req.body
         const refreshToken = req.cookies.refreshToken
         console.log(link)
         const calendars = await UserServices.acceptInvite(link, refreshToken)
         return calendars
+    }
+    
+    async uploadImg(req, res, next) {
+        try {
+            const { refreshToken } = req.cookies
+            const { image } = req.files
+            if (!image) return res.sendStatus(400)
+            // console.log(refreshToken)
+            const userData = await UserServices.uploadImg(refreshToken, image)
+            return res.sendFiles(__dirname + '../img/' + image.name)
+        }
+        catch (e) {
+            next(e)
+        }
     }
 }
 

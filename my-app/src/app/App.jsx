@@ -1,34 +1,25 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { observer } from 'mobx-react-lite'
+import { Context } from "../";
 
 import { Routing } from "../pages";
 import "./style.css"
 
 const App = () => {
+
+  const { store } = useContext(Context)
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      store.checkAuth()
+    }
+  }, [])
+
   return (
     <div className="app">
-      <Routing />
+      {
+        store.isLoading ? null : <Routing />
+      }
     </div>
   );
 };
-export default App;
-
-
-// import React from 'react';
-// import { Routes, Route } from 'react-router-dom'
-
-// import { Homepage } from '../pages/index'
-// import { Notfoundpage } from '../pages/index'
-
-// function App() {
-//   return (
-//     // <div>dwdwd</div>
-//     <Routes>
-//       <Route path="/" element={<Homepage />} />
-
-//       <Route path="*" element={<Notfoundpage />} />
-//     </Routes>
-//   );
-// }
-
-// export default App;
-
+export default observer(App);

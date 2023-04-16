@@ -20,8 +20,8 @@ export const MainPageCatList = () => {
 
     return (
         <div>
-            {itemsBurger.map(item =>
-                <div className='box_product_main_page'>
+            {itemsBurger.map((item, index) =>
+                <div className='box_product_main_page' key={index}>
                     <div className='category_prodyct'>{item.value}</div>
                     <MainPageEventList eventItems={eventItems} categoruID={item.id} />
                 </div>)}
