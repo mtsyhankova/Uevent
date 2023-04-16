@@ -7,12 +7,9 @@ import "./style.css"
 
 const Authpage = () => {
     const { store } = useContext(Context)
-
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
     const [error, setError] = useState('');
-
-
     let navigate = useNavigate();
 
     const loginFunc = async event => {

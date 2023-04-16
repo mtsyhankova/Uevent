@@ -16,6 +16,7 @@ import EventSettingsPage from "./EventSettings/EventSettingsPage";
 import NewCompany from "./NewCompanyPage/NewCompany";
 import PaymentPage from "./Payment/PaymentPage";
 import { NewEvent } from "./NewEventPage/NewEvent";
+import { AdminPanelPage } from "./AdminPanel/AdminPanelPage";
 
 export const Routing = () => {
     return (
@@ -31,6 +32,7 @@ export const Routing = () => {
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/profile/settings" element={<ProfileSettingsPage />} />
+            <Route path="/admin/panel" element={<AdminPanelPage />} />
 
             <Route path="/companies" element={<CompaniesPage />} />
             <Route path="/company/setting" element={<SettingCompanyPage />} />
