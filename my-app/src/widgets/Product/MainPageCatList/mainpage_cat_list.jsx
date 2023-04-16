@@ -10,7 +10,7 @@ export const MainPageCatList = () => {
         { id: '1bdehbjjebde', value: "КОНЦЕРТИ В ЄВРОПІ" },
         { id: '1bdehbjjebde', value: "КОНЦЕРТИ В ЄВРОПІ" },]
 
-    const eventItems = [{ date: "12.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "200" },
+    const eventItems = [{ date: "12.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "Безкоштовно" },
     { date: "15.04.2023 - 18.04.2023", name: "Абобус", location: "Місце проведення", city: "Київ", price: "100" },
     { date: "25.04.2023", name: "Абобіще", location: "Місце проведення", city: "Київ", price: "150" },
     { date: "02.05.2023", name: "Два абобуси", location: "Місце проведення", city: "Київ", price: "300" },

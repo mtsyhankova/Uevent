@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams/*, useNavigate*/ } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { NavBar } from '../../widgets/User/NavBar'
 import LocationMap from '../../widgets/Product/LocationMap/location_map';
 import Comments from '../../widgets/User/Comments/comments';
@@ -11,26 +11,42 @@ import "./style.css"
 
 const EventOpened = () => {
     const { date, name, location, city, price } = useParams();
-    const [buttonText, setButtonText] = useState([`${price} грн`]);
+    const [buttonText, setButtonText] = useState(price === "Безкоштовно" ? `${price}` : `${price} грн`);
+    const [isSubscribed, setIsSubscribed] = useState(false);
     // const [eventsPage, setEventsPage] = useState([0]);
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
     function onhover() {
-        setButtonText("Підписатися");
+        if (!isSubscribed)
+            setButtonText("Підписатися");
+        else
+            setButtonText("Відписатися");
     }
 
     function offhover() {
-        setButtonText(`${price} грн`);
+        if (!isSubscribed)
+            setButtonText(price === "Безкоштовно" ? `${price}` : `${price} грн`);
+        else
+            setButtonText("Ви підписані");
     }
 
     const checkAuth = async event => {
         event.preventDefault();
-        if (!localStorage.getItem('token')) {
-            navigate('/auth');
-        } else {
-            navigate(`/`)
+        // if (!localStorage.getItem('token')) {
+        //     navigate('/auth');
+        // } else {
+        switch (isSubscribed) {
+            case true: {
+                setIsSubscribed(false); break;
+            }
+            default: {
+                if (price !== "Безкоштовно")
+                    navigate(`/payment/${price}`);
+                else
+                    setIsSubscribed(true);
+            }
         }
-
+        // }
     }
 
     return (
