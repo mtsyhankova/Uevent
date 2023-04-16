@@ -5,6 +5,7 @@ const mailservice = require('./mail-service')
 const tokenService = require('./token-service')
 const UserDto = require('../dtos/user-dtos')
 const ApiError = require('../exceptions/api-error')
+const tokenModel = require('../models/token-model')
 
 class UserService {
     async registration(email, password, name, status,) {
@@ -77,11 +78,23 @@ class UserService {
         return users
     }
 
-    async updUser(refreshToken, name, status, imagePath){
-        const user = tokenService.validateRefreshToken(refreshToken)
-        const userData = await UserModel.updateOne({user: user._id}, {name: name, status:status, img: imagePath})
-        const userDto = new UserDto(userData)
-        return userDto
+    async updUser(req, res, next) {
+        try {
+            console.log(req.files)
+            const { refreshToken } = req.cookies
+            const user = tokenModel.validateRefreshToken(refreshToken)
+            console.log(req.body)
+            const formData = req.body
+            console.log('form data', formData.file)
+            const imageName = req.files.fieldname
+            const basePath = `${req.protocol}://${req.get('host')}/public/upload/${imageName}`
+            // console.log(refreshToken)
+            const userData = await UserModel.updateOne({_id: user.id}, {name: formData.name, status: formData.status, img: basePath})
+            return res.json(userData)
+        }
+        catch (e) {
+            next(e)
+        }
     }
 
 }

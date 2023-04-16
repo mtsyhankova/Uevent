@@ -1,9 +1,11 @@
 const Router = require('express').Router;
 const userController = require('../controllers/user-controller')
+const companyController = require('../controllers/company-controller')
 const { body } = require('express-validator')
 const authMiddleware = require('../middleware/auth-middleware');
 const bodyParser = require('body-parser')
-const multer = require('multer')
+const multer = require('multer');
+const companyModel = require('../models/company-model');
 const router = new Router()
 
 const storage = multer.diskStorage({
@@ -11,8 +13,7 @@ const storage = multer.diskStorage({
         cb(null, 'public/upload')
     }, 
     filename: function(req, file, cb){
-        const fileName = file.originalname.replace(' ','-')
-        cb(null, fileName+'-'+Date.now)
+        cb(null, file.originalname)
     }
 })
 
@@ -28,7 +29,11 @@ router.post('/logout', userController.logout)
 router.get('/activation/:link', userController.activation)
 router.get('/refresh', userController.refresh)
 router.post('/updUser', userController.updUser)
-router.post('/uploadImg', userController.uploadImg)
+router.post('/uploadImg', uploadOptions.any('file'), userController.uploadImg)
+router.post('/createCo', uploadOptions.any('file'), companyController.createCompany)
+router.post('/removeCo', companyController.deleteCompany)
+router.post('editCo', uploadOptions.any('file'),companyController.editCompany)
+router.get('/getCo', companyController.getCompany)
 // router.get('/getMembers', authMiddleware,userController.getUsers)
 
 module.exports = router
