@@ -4,18 +4,13 @@ import { BrowserRouter } from 'react-router-dom'
 import Store from './store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
 import App from './app/App';
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = new Store()
 export const Context = createContext({
     store
 })
-
-
 
 root.render(
     <Context.Provider value={{

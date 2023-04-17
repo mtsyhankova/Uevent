@@ -29,7 +29,7 @@ export const NavBar = () => {
                 <div className='header_box_navBar'>
                     <div className='flex_row_nv'>
                         <BurgerButton active={menuActive} setActive={setMenuActive} />
-                        <MenuBurger active={menuActive} setActive={setMenuActive} header={'ddeded'} items={itemsBurger} />
+                        <MenuBurger active={menuActive} setActive={setMenuActive} items={itemsBurger} />
                         <Link to='/' className='home_nema'>ᑗᙍᐻᙍᘉᖶ</Link>
                     </div>
 

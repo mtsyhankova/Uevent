@@ -1,62 +1,50 @@
 import React, { useState, useContext } from 'react';
-import companyAvatar from '../../../asssets/Company/luffy.jpg'
+import { useNavigate } from 'react-router-dom';
 import { Context } from "../../../";
 
 import "./style.css"
 
 export const ProfileSettingsForm = () => {
     const { store } = useContext(Context)
+    const [error, setError] = useState(store.user.name);
+    let navigate = useNavigate();
+
 
     const [userName, setUserName] = useState(store.user.name);
     const [userStatus, setUserStatus] = useState(store.user.status ? store.user.status : '');
     const [userEmail, setUserEmail] = useState(store.user.email)
-
-    const [picture, setPicture] = useState([]);
-    // const [img, setImg] = useState();
-    const img = store.user.img
-
+    const [img, setImg] = useState(null);
+    const [avatar, setAvatar] = useState(null);
 
     const updateUser = async event => {
         event.preventDefault();
-
-        const files = picture
-        console.log('-------------------------------')
-        console.log(files)
-        console.log('===============================')
-        console.log(typeof (files))
-        const errorMessage = await store.updateUser(files, userName, userStatus);
-
-        // if (errorMessage !== true) {
-        //     setError(errorMessage.response.data.message)
-        // }
-        // else {
-        //     navigate('/');
-        // }
+        const errorMessage = await store.updateUser(img, userName, userStatus);
+        if (errorMessage !== true) {
+            setError(errorMessage.response.data.message)
+        }
+        else {
+            navigate('/profile/' + store.user.id);
+        }
 
     }
 
-
-
-    const fileUploadHandler = async event => {
-
-    }
-
-
-    // const onChangePicture = e => {
-    //     // console.log('picture: ', picture);
-    //     setImg(URL.createObjectURL(e.target.files[0]));
-
-    //     // console.log(picture)
-    // };
+    const onChangePicture = e => {
+        setImg(e.target.files[0])
+        setAvatar(URL.createObjectURL(e.target.files[0]));
+    };
 
     return (
         <form className='profset_box'>
             <p className='profset_upper_text'>Налаштування профілю</p>
-            {console.log(img)}
-            <img className='profset_avatar' alt="aboba" />
+            {avatar ?
+                <img className='profset_avatar' src={avatar} alt="aboba" /> :
+                <img className='profset_avatar' src={store.user.img} alt="aboba" />
+            }
+            {/* <img className='profset_avatar' src={store.user.img} alt="aboba" /> */}
             <label className="profset_avatar_label">
                 Загрузити аватар
-                <input type="file" name="file" onChange={(event) => setPicture(event.target.files)} id="file_in" className="profset_avatar_input" />
+                {/* e => setImg(e.target.files[0]) */}
+                <input type="file" name="file" accept="image/*,.png,.jpg" onChange={onChangePicture} id="file_in" className="profset_avatar_input" />
             </label>
 
             <div className='profset_editable_box'>

@@ -4,7 +4,6 @@ import { API_URL } from './http';
 import AuthService from './service/auth_service';
 import UserService from './service/user-service';
 
-
 export default class Store {
     user = { id: '', email: '', name: '', img: '', status: '', activated: false }
     isAuth = false;
@@ -31,7 +30,6 @@ export default class Store {
         this.isLoading = bool
     }
 
-
     async checkAuth() {
         this.setLoading(true)
 
@@ -40,9 +38,10 @@ export default class Store {
             const response = await axios.get(`${API_URL}/refresh`, { withCredentials: true })
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
-            this.setUser(response.data.user.activated, response.data.user.email,
+            this.setUser(
+                response.data.user.activated, response.data.user.email,
                 response.data.user.id, response.data.user.img,
-                response.data.user.name)
+                response.data.user.name, response.data.user.status)
         } catch (e) {
 
         } finally {
@@ -50,19 +49,16 @@ export default class Store {
         }
     }
 
-
-
-
     async login(email, password) {
         try {
             const response = await AuthService.login(email, password)
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
-            this.setUser(response.data.user.activated, response.data.user.email,
+            this.setUser(
+                response.data.user.activated, response.data.user.email,
                 response.data.user.id, response.data.user.img,
-                response.data.user.name)
+                response.data.user.name, response.data.user.status)
             // let userInfo = JSON.parse(JSON.stringify(store.user)) так надо достовать данніе о юзере со стора глобалього
-            // console.log(store.user)
             return (true)
         } catch (e) {
             console.log(e.response?.data?.message)
@@ -74,9 +70,10 @@ export default class Store {
             const response = await AuthService.registration(email, password)
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
-            this.setUser(response.data.user.activated, response.data.user.email,
+            this.setUser(
+                response.data.user.activated, response.data.user.email,
                 response.data.user.id, response.data.user.img,
-                response.data.user.name)
+                response.data.user.name, response.data.user.status)
             return (true)
 
         } catch (e) {
@@ -97,37 +94,25 @@ export default class Store {
         }
     }
 
-
     /////////////////////////////////////////////////USER///////////////////////////////////////////
     async updateUser(files, name, status) {
         try {
-            console.log(files[0])
             const formData = new FormData()
-
             formData.append('name', name)
+            formData.append('nameImg', files.name)
             formData.append('status', status)
-            formData.append('file', files[0])
-            console.log(formData)
+            formData.append('avatar', files)
             const response = await UserService.update(formData)
-            console.log(response)
+            this.setUser(
+                response.data.isActivated, response.data.email,
+                response.data.id, response.data.img,
+                response.data.name, response.data.status)
 
-            // localStorage.setItem('token', response.data.accessToken)
-            // this.setAuth(true)
-            // this.setUser(response.data.user.activated, response.data.user.email,
-            //     response.data.user.id, response.data.user.img,
-            //     response.data.user.name)
-            // return (true)
+            return (true)
 
         } catch (e) {
             console.log(e.response?.data?.message)
             return (e)
         }
     }
-
-
-
-
-
-
-
 }
