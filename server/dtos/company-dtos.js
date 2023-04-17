@@ -7,11 +7,10 @@ module.exports = class UserDto {
     status
 
     constructor(model) {
-        this.email = model.email
         this.id = model._id
-        this.isActivated = model.activated
-        this.status = model.status
         this.name = model.name
-        this.img = model.img
+        this.description = model.description
+        this.owner = model.owner
+        this.logo = model.logo
     }
 }

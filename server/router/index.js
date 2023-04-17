@@ -6,15 +6,16 @@ const bodyParser = require('body-parser')
 const multer = require('multer')
 const router = new Router()
 
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/upload')
+        cb(null, 'public')
     },
     filename: function (req, file, cb) {
-
-        cb(null, file.originalname)
+        cb(null, file.originalname.replace(' ', '-'))
     }
 })
+
 
 const uploadOptions = multer({ storage: storage })
 
@@ -27,7 +28,7 @@ router.post('/login', userController.login)
 router.post('/logout', userController.logout)
 router.get('/activation/:link', userController.activation)
 router.get('/refresh', userController.refresh)
-router.post('/updUser', uploadOptions.any('file'), userController.updUser)
+router.post('/updUser', uploadOptions.any('avatar'), userController.updUser)
 // router.get('/getMembers', authMiddleware,userController.getUsers)
 
 module.exports = router

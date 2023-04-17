@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { Routes, Route } from "react-router";
 import React from 'react';
+import { Context } from "../";
 import Homepage from "./Home/Homepage";
 import NotFoundPage from "./NotFound/NotFoundPage";
 import Productspage from "./Products/Productpage";
@@ -19,6 +21,8 @@ import { NewEvent } from "./NewEventPage/NewEvent";
 import { AdminPanelPage } from "./AdminPanel/AdminPanelPage";
 
 export const Routing = () => {
+    const { store } = useContext(Context)
+    
     return (
         <Routes>
             <Route path="*" element={<NotFoundPage />} />

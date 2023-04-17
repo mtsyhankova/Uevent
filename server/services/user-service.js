@@ -26,7 +26,6 @@ class UserService {
 
     async activation(activationLink) {
         const user = await UserModel.findOne({ activationLink })
-        // console.log(user)
         if (!user) {
             throw ApiError.BadRequest('Shiit мэнчик, cringe')
         }
@@ -56,7 +55,6 @@ class UserService {
     }
 
     async refresh(refreshToken) {
-        console.log("grgrg")
         if (!refreshToken) {
             throw ApiError.UnathorizedError()
         }
@@ -80,7 +78,8 @@ class UserService {
 
     async updUser(refreshToken, name, status, imagePath) {
         const user = tokenService.validateRefreshToken(refreshToken)
-        const userData = await UserModel.updateOne({ user: user._id }, { name: name, status: status, img: imagePath })
+        await UserModel.updateOne({ _id: user.id }, { $set: { name: name, status: status, img: imagePath } })
+        const userData = await UserModel.findById(user.id)
         const userDto = new UserDto(userData)
         return userDto
     }

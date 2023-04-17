@@ -7,16 +7,25 @@ const router = require('./router/index')
 const cors = require('cors')
 const PORT = process.env.PORT || 8000
 
+const path = require('path')
+
 const app = express()
 
-app.use(express.json());
+app.use(express.json({ extended: true }));
+app.use('/public', express.static(path.join(__dirname, 'public')))
+
 app.use(cookieParser());
+
 app.use(cors({
     credentials: true,
     origin: process.env.CLIENT_URL
 }))
+
+
 app.use('/api', router)
 app.use(errorsMiddleware)
+
+
 
 const start = async () => {
     try {

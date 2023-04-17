@@ -28,7 +28,7 @@ class MailService {
                 `
         })
     }
-    async sendInvite(to, link){
+    async sendInvite(to, link) {
         await this.transporter.sendMail({
             from: process.env.MAIL_USER,
             to,

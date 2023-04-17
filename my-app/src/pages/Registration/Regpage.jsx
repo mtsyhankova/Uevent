@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { registration } from "./model/store"
 import { useNavigate } from 'react-router-dom';
 import { Context } from "../../";
 

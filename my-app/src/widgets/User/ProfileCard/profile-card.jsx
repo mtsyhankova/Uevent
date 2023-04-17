@@ -4,8 +4,6 @@ import { Context } from "../../..";
 
 import OtherEventsList from '../../Product/OtherEventsList/other_events_list';
 import CompaniesList from '../../Product/CompaniesList/companies_list';
-
-import userAvatar from '../../../asssets/User/luffy.jpg'
 import settings from './assets/settings.png'
 
 import "./style.css"
@@ -13,16 +11,14 @@ import "./style.css"
 export const ProfileCard = () => {
     const { store } = useContext(Context)
 
-
     const UpperText1 = "Історія покупок"
     // const UpperText2 = "Мої компанії"
     const countMassege = 100;// количство непрочитаніх сообщ
-    const userData = { name: 'abobus1', status: 'dwdwddwdvv f ugfufefuegfegfg f eugfe  fuge egf  fuegf efuegf ue fgeugfe   egfe fugfug fu' }
 
     return (
         <div>
             <div className='card_box_pr'>
-                <div>  <img className='img_avatar_pr' src={userAvatar} alt="aboba" /></div>
+                <div>  <img className='img_avatar_pr' src={store.user.img} alt="aboba" /></div>
                 <div className='data_user_pr'>
                     <p className='name_user_pr'>{store.user.name}</p>
                     <p className='status_user_pr'>Статус:{store.user.status}</p>

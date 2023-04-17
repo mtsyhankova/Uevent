@@ -35,7 +35,6 @@ class UserController {
     async logout(req, res, next) {
         try {
             const { refreshToken } = req.cookies
-            // console.log(refreshToken)
             const token = await UserServices.logout(refreshToken)
             res.clearCookie('refreshToken')
             return res.json(token)
@@ -69,14 +68,10 @@ class UserController {
 
     async updUser(req, res, next) {
         try {
-            console.log(req.files)
             const { refreshToken } = req.cookies
-            console.log(req.body)
             const formData = req.body
-            console.log('form data', formData.file)
-            const imageName = req.files.fieldname
-            const basePath = `${req.protocol}://${req.get('host')}/public/upload/${imageName}`
-            // console.log(refreshToken)
+            const imageName = formData.nameImg
+            const basePath = `${req.protocol}://${req.get('host')}/public/${imageName}`
             const userData = await UserServices.updUser(refreshToken, formData.name, formData.status, basePath)
             return res.json(userData)
         }
@@ -85,20 +80,11 @@ class UserController {
         }
     }
 
-    async acceptInvite(req, res, next){
-        const { link } = req.body
-        const refreshToken = req.cookies.refreshToken
-        console.log(link)
-        const calendars = await UserServices.acceptInvite(link, refreshToken)
-        return calendars
-    }
-    
     async uploadImg(req, res, next) {
         try {
             const { refreshToken } = req.cookies
             const { image } = req.files
             if (!image) return res.sendStatus(400)
-            // console.log(refreshToken)
             const userData = await UserServices.uploadImg(refreshToken, image)
             return res.sendFiles(__dirname + '../img/' + image.name)
         }
@@ -106,6 +92,7 @@ class UserController {
             next(e)
         }
     }
+
 }
 
 module.exports = new UserController()
