@@ -1,11 +1,12 @@
 import { makeAutoObservable } from 'mobx'
 import axios from 'axios';
 import { API_URL } from './http';
-import AuthService from './service/auth_service';
+import AuthService from './service/auth-service';
 import UserService from './service/user-service';
+import CompanyService from './service/company-service';
 
 export default class Store {
-    user = { id: '', email: '', name: '', img: '', status: '', activated: false }
+    user = { id: '', email: '', name: '', img: '', status: '', activated: false, isadmin: false }
     isAuth = false;
     isLoading = false;
 
@@ -17,13 +18,14 @@ export default class Store {
         this.isAuth = bool
     }
 
-    setUser(activated, email, id, img, name, status) {
+    setUser(activated, email, id, img, name, status, isadmin) {
         this.user.id = id
         this.user.email = email
         this.user.name = name
         this.user.img = img
         this.user.status = status
         this.user.activated = activated
+        this.user.isadmin = isadmin
     }
 
     setLoading(bool) {
@@ -41,7 +43,8 @@ export default class Store {
             this.setUser(
                 response.data.user.activated, response.data.user.email,
                 response.data.user.id, response.data.user.img,
-                response.data.user.name, response.data.user.status)
+                response.data.user.name, response.data.user.status,
+                response.data.user.isAdmin)
         } catch (e) {
 
         } finally {
@@ -57,7 +60,8 @@ export default class Store {
             this.setUser(
                 response.data.user.activated, response.data.user.email,
                 response.data.user.id, response.data.user.img,
-                response.data.user.name, response.data.user.status)
+                response.data.user.name, response.data.user.status,
+                response.data.user.isAdmin)
             // let userInfo = JSON.parse(JSON.stringify(store.user)) так надо достовать данніе о юзере со стора глобалього
             return (true)
         } catch (e) {
@@ -70,10 +74,12 @@ export default class Store {
             const response = await AuthService.registration(email, password)
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
+            console.log(response)
             this.setUser(
                 response.data.user.activated, response.data.user.email,
                 response.data.user.id, response.data.user.img,
-                response.data.user.name, response.data.user.status)
+                response.data.user.name, response.data.user.status,
+                response.data.user.isAdmin)
             return (true)
 
         } catch (e) {
@@ -103,10 +109,12 @@ export default class Store {
             formData.append('status', status)
             formData.append('avatar', files)
             const response = await UserService.update(formData)
+            console.log(response)
             this.setUser(
                 response.data.isActivated, response.data.email,
                 response.data.id, response.data.img,
-                response.data.name, response.data.status)
+                response.data.name, response.data.status,
+                response.data.isAdmin)
 
             return (true)
 
@@ -114,5 +122,16 @@ export default class Store {
             console.log(e.response?.data?.message)
             return (e)
         }
+    }
+
+    async getCompanies(id) {
+
+        try {
+            const dataCompany = await CompanyService.getCom(id)
+            return (dataCompany)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+
     }
 }

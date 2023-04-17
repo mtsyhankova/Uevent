@@ -20,6 +20,15 @@ export const NavBar = () => {
     { value: "Контакти", href: "/", icon: "anchor" },
     { value: "Оплата", href: "/", icon: "api" },]
 
+
+    const itemsBurgerAuth = [
+        { value: "Усі події", href: "/", icon: "anchor" },
+        { value: "Мої компанії", href: "/companies", icon: "anchor" },
+        { value: "Історія покупок", href: "/", icon: "anchor" },
+        { value: "Про нас", href: "*", icon: "anchor" },
+        { value: "Контакти", href: "/", icon: "anchor" },
+        { value: "Оплата", href: "/", icon: "api" },]
+
     const [menuActive, setMenuActive] = useState(false);
     const [menuSearchActive, setMenuSearchActive] = useState(false);
 
@@ -29,7 +38,7 @@ export const NavBar = () => {
                 <div className='header_box_navBar'>
                     <div className='flex_row_nv'>
                         <BurgerButton active={menuActive} setActive={setMenuActive} />
-                        <MenuBurger active={menuActive} setActive={setMenuActive} items={itemsBurger} />
+                        <MenuBurger active={menuActive} setActive={setMenuActive} items={store.isAuth ? itemsBurgerAuth : itemsBurger} />
                         <Link to='/' className='home_nema'>ᑗᙍᐻᙍᘉᖶ</Link>
                     </div>
 

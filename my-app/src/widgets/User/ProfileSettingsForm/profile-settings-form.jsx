@@ -19,6 +19,7 @@ export const ProfileSettingsForm = () => {
     const updateUser = async event => {
         event.preventDefault();
         const errorMessage = await store.updateUser(img, userName, userStatus);
+        console.log(errorMessage)
         if (errorMessage !== true) {
             setError(errorMessage.response.data.message)
         }

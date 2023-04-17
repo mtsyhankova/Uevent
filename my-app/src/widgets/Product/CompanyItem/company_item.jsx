@@ -4,7 +4,7 @@ import luffy from '../../../asssets/User/luffy.jpg'
 
 import "./style.css"
 
-const CompanyItem = ({ name, location, email }) => {
+const CompanyItem = ({ name, location, email, id, idUs }) => {
     let navigate = useNavigate();
 
     return (
@@ -14,14 +14,13 @@ const CompanyItem = ({ name, location, email }) => {
                 <p className='event-date-text'>{name}</p>
                 <p className='event-name-text'>{location}</p>
                 <p className='event-location-text'>{email}</p>
-                {/* <p className='event-city-text'>{city}</p>
-                <p className='event-price-text'>{price}</p> */}
+
                 <div className='company-card-pink'>
                     <p className='event-reverse-date'>{location}</p>
                     <p className='event-reverse-location'>{email}</p>
                     <p className='company-reverse-name'>{name}</p>
 
-                    <span className='event-button' onClick={() => { navigate(`/companies`) }}>Детальніше</span>
+                    <span className='event-button' onClick={() => { navigate(`/companies/${idUs}/${id}`) }}>Детальніше</span>
                 </div>
             </div>
         </div>

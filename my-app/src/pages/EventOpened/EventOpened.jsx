@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Context } from "../../";
+
 import { NavBar } from '../../widgets/User/NavBar'
 import LocationMap from '../../widgets/Product/LocationMap/location_map';
 import Comments from '../../widgets/User/Comments/comments';
@@ -10,20 +12,24 @@ import luffy from './assets/luffy.jpg';
 import "./style.css"
 
 const EventOpened = () => {
+    const { store } = useContext(Context)
+
     const { date, name, location, city, price } = useParams();
     let { isSubscribed } = useParams();
     const [isSubscribedVar, setIsSubscribedVar] = useState(isSubscribed);
     const [buttonText, setButtonText] = useState();
     let navigate = useNavigate();
 
+    window.scrollTo(0, 0);
+
     useEffect(() => {
-        if(isSubscribedVar === "true") {
+        if (isSubscribedVar === "true") {
             setButtonText("Ви підписані");
         }
         else {
             setButtonText(price === "Безкоштовно" ? `${price}` : `${price} грн`);
         }
-      }, [isSubscribedVar, price])
+    }, [isSubscribedVar, price])
 
     function onhover() {
         if (isSubscribedVar !== "true")
@@ -33,6 +39,7 @@ const EventOpened = () => {
     }
 
     function offhover() {
+
         if (isSubscribedVar !== "true")
             setButtonText(price === "Безкоштовно" ? `${price}` : `${price} грн`);
         else
@@ -41,21 +48,22 @@ const EventOpened = () => {
 
     const checkAuth = async event => {
         event.preventDefault();
-        // if (!localStorage.getItem('token')) {
-        //     navigate('/auth');
-        // } else {
-        switch (isSubscribedVar) {
-            case "true": {
-                setIsSubscribedVar("false"); break;
+        if (store.isAuth) {
+            switch (isSubscribedVar) {
+                case "true": {
+                    setIsSubscribedVar("false"); break;
+                }
+                default: {
+                    if (price !== "Безкоштовно")
+                        navigate(`/event/payment/${date}/${name}/${location}/${city}/${price}`);
+                    else
+                        setIsSubscribedVar("true");
+                }
             }
-            default: {
-                if (price !== "Безкоштовно")
-                    navigate(`/event/payment/${date}/${name}/${location}/${city}/${price}`);
-                else
-                    setIsSubscribedVar("true");
-            }
+
+        } else {
+            navigate('/auth');
         }
-        // }
     }
 
     return (

@@ -25,7 +25,6 @@ export const ProfileCard = () => {
                 </div>
                 <div className='box_link_button_pr'>
                     <Link className='message_link_pr' to='/notifications'>
-                        {/* <img className='message_img' src={luffy} alt="aboba" /> */}
                         <div className='count_message_block_pr'>
                             {countMassege > 99 ? <p>99+</p> : <p>{countMassege}</p>}
                         </div>
